@@ -1,0 +1,156 @@
+
+
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>FDG PET/CT</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<!--<script src="https://cdn.jsdelivr.net/npm/vega@5.21.1"></script> -->
+		<!--<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script> -->
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">autoPET</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<a href="#">Challenges</a>
+								<ul>
+									<li><a href="autopeti.html">autoPET-I</a></li>
+									<li><a href="autopetii.html">autoPET-II</a></li>
+									<li><a href="autopetiii.html">autoPET-III</a></li>
+									<li><a href="autopetiv.html">autoPET/CT-IV</a></li>
+								</ul>
+							</li>
+							<li>
+							<a href="#">Databases</a>
+								<ul>
+									<li><a href="fdgpetct.html">FDG PET/CT</a></li>
+									<li><a href="psmapetct.html">PSMA PET/CT</a></li>
+									<li><a href="longitudinalct.html">Longitudinal CT</a></li>
+								</ul>
+							</li>
+							<li><a href="organizers.html">Organizers</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">		
+							<h2>FDG PET/CT database</h2>
+						</header>
+
+
+						<section id="Database_sec">
+							<a class="anchor" id="Database"></a>
+							<h3>Database</h3>
+							<p style="text-align:justify">
+							The cohort consists of patients with histologically proven malignant melanoma, lymphoma or lung cancer as well as negative control patients who were examined by FDG-PET/CT in two large medical centers (University Hospital Tübingen, Germany & University Hospital of the LMU in Munich, Germany).
+<br/>
+All PET/CT data have been acquired on state-of-the-art PET/CT scanners (Siemens Biograph mCT, mCT Flow and Biograph 64, GE Discovery 690) using standardized protocols following international guidelines. CT as well as PET data are provided as 3D volumes consisting of stacks of axial slices. Data provided as part of this challenge consists of whole-body examinations. Usually, the scan range of these examinations extends from the skull base to the mid-thigh level. If clinically relevant, scans can be extended to cover the entire body including the entire head and legs/feet.
+</p>
+<h4>PET/CT acquisition protocol</h4>
+<p style="text-align:justify">
+University Hospital Tübingen: Patients fasted at least 6 h prior to the injection of approximately 350 MBq 18F-FDG. Whole-body PET/CT images were acquired using a Biograph mCT PET/CT scanner (Siemens, Healthcare GmbH, Erlangen, Germany) and were initiated approximately 60 min after intravenous tracer administration. Diagnostic CT scans of the neck, thorax, abdomen and pelvis (200 reference mAs; 120 kV) were acquired 90 sec after intravenous injection of a contrast agent (90–120 ml Ultravist 370, Bayer AG). PET Images were reconstructed iteratively (three iterations, 21 subsets) with Gaussian post-reconstruction smoothing (2 mm full width at half-maximum). Slice thickness on contrast-enhanced CT was 2 or 3 mm.
+<br/>
+University Hospital of the LMU in Munich: Patients fasted at least 6 h prior to the injection of approximately 250 MBq 18F-FDG. Whole-body PET/CT images were acquired on state-of-the-art PET/CT scanners (Siemens Biograph mCT, mCT Flow and Biograph 64, GE Discovery 690) and were initiated approximately 60 min after intravenous tracer administration. Diagnostic CT scans of the neck, thorax, abdomen and pelvis (100–190 mAs; 120 kV) were acquired 90 sec after weight-adapted intravenous injection of a contrast agent (Ultravist 300, Bayer AG or Imeron 350, Bracco Imaging Deutschland GmbH). PET Images were reconstructed iteratively (three iterations, 21 subsets) with Gaussian post-reconstruction smoothing (2 mm full width at half-maximum). Slice thickness on contrast-enhanced CT was 3 mm.
+</p>
+
+<h4>Cohort</h4>
+<p style="text-align:justify">
+Training cases: 1,014 studies (900 patients)<br/>
+
+A case consists of one 3D whole body FDG-PET volume, one corresponding 3D whole body CT volume and one 3D binary mask of manually segmented tumor lesions on FDG-PET of the size of the PET volume. CT and PET were acquired simultaneously on a single PET/CT scanner in one session; thus PET and CT are anatomically aligned up to minor shifts due to physiological motion.
+</p>
+
+Training data consists of 1,014 studies acquired at the University Hospital Tübingen and is made publicly available on <a href="https://www.cancerimagingarchive.net/">TCIA</a> (as DICOM, NiFTI and HDF5 files). After download, you can convert the DICOM files to e.g. the NIfTI format using scripts provided <a href="https://github.com/lab-midas/TCIA_processing">here</a>.
+
+						</p>
+
+						DICOM:  <a href="https://doi.org/10.7937/gkr0-xv29"><img src="https://img.shields.io/badge/DOI-10.7937%2Fgkr0--xv29-blue"></a>
+						<br/>
+						NiFTI: 
+						<br/>
+						If you use this data, please cite:
+						<pre><code>Gatidis S, Kuestner T. A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions) [Dataset]. The Cancer Imaging Archive, 2022. DOI: 10.7937/gkr0-xv29
+						</code></pre>
+						<h4>Data pre-processing and structure</h4>
+						<p style="text-align:justify">
+						In a pre-processing step, the TCIA DICOM files are resampled (CT to PET imaging resolution, i.e. same matrix size) and normalized (PET converted to standardized update values; SUV). 
+
+						For the challenge, the pre-processed data will be provided in NifTI format. PET data is standardized by converting image units from activity counts to standardized uptake values (SUV). We recommend to use the resampled CT (CTres.nii.gz) and the PET in SUV (SUV.nii.gz). The mask (SEG.nii.gz) is binary with 1 indicating the lesion. The training and test database have the following structure:
+<pre><code>
+|--- Patient 1
+	|--- Study 1
+		|--- SUV.nii.gz    (PET image in SUV)
+		|--- CTres.nii.gz  (CT image resampled to PET)
+		|--- CT.nii.gz     (Original CT image)
+		|--- SEG.nii.gz    (Manual annotations of tumor lesions)
+		|--- PET.nii.gz    (Original PET image as actictivity counts)
+	|--- Study 2            (Potential 2nd visit of same patient)
+		|--- ...
+|--- Patient 2
+	|--- ...
+
+</code></pre>
+Each NiFTI file contains the respective image or the mask.
+An example case can be loaded as:						
+<pre><code>import nibabel as nib
+SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-96698', 'SUV.nii.gz'))
+</code></pre>
+						where <code>PETCT_0af7ffe12a</code> is the fully anonymized patient and <code>08-12-2005-NA-PET-CT Ganzkoerper primaer mit KM-96698</code> is the anonymized study (randomly generated study name, date is not reflecting scan date).
+						</p>
+						<h4>Annotation</h4>
+						<p style="text-align:justify">
+						Two experts annotated training and test data: At the University Hospital Tübingen, a Radiologist with 10 years of experience in Hybrid Imaging and experience in machine learning research annotated all data. At the University Hospital of the LMU in Munich, a Radiologist with 5 years of of experience in Hybrid Imaging and experience in machine learning research annotated all data.
+						<br/>
+						The following annotation protocol was defined:<br/>
+						Step 1: Identification of FDG-avid tumor lesions by visual assessment of PET and CT information together with the clinical examination reports.<br/>
+						Step 2: Manual free-hand segmentation of identified lesions in axial slices.
+						</p>
+						</section>				
+
+						
+
+						
+					</div>
+				</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="https://github.com/lab-midas/autopet" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="mailto: autopetchallenge@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; autoPET organizers. All rights reserved.</li>
+				</ul>
+			</footer>
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

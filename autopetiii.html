@@ -1,0 +1,1025 @@
+
+
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>autoPET-III</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<!--<script src="https://cdn.jsdelivr.net/npm/vega@5.21.1"></script> -->
+		<!--<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script> -->
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">autoPET</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<a href="#">Challenges</a>
+								<ul>
+									<li><a href="autopeti.html">autoPET-I</a></li>
+									<li><a href="autopetii.html">autoPET-II</a></li>
+									<li><a href="autopetiii.html">autoPET-III</a></li>
+									<li><a href="autopetiv.html">autoPET/CT-IV</a></li>
+								</ul>
+							</li>
+							<li>
+							<a href="#">Databases</a>
+								<ul>
+									<li><a href="fdgpetct.html">FDG PET/CT</a></li>
+									<li><a href="psmapetct.html">PSMA PET/CT</a></li>
+									<li><a href="longitudinalct.html">Longitudinal CT</a></li>
+								</ul>
+							</li>
+							<li><a href="organizers.html">Organizers</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">		
+							<img src="images/autopet3_logo.png" height="100">
+							<h2>autoPET-III</h2>
+							<p>The tracer frontier</p>
+						</header>
+
+						<!-- Text -->
+						<section id="labels" class="wrapper2 style1 special">
+							<div class="container">
+									<div class="box alt">
+									<div class="row gtr-uniform">
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<span class="icon solid alt major fa-list" onclick="window.location.href='#Task';"></span>
+											<a href="#Task"><h3>Task</h3></a>
+										</section>
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<span class="icon solid alt major fa-database"  onclick="window.location.href='#Database';"></span>
+											<a href="#Database"><h3>Database</h3></a>
+										</section>
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<a href="#Evaluation">
+											<span class="icon solid alt major fa-dna" onclick="window.location.href='#Evaluation';"></span>
+											<h3>Evaluation</h3></a>
+										</section>
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<a href="#Codes">
+											<span class="icon solid alt major fa-file" onclick="window.location.href='#Codes';"></span>
+											<h3>Codes and Models</h3></a>
+										</section>
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<a href="#Leaderboard">
+											<span class="icon solid alt major fa-trophy" onclick="window.location.href='#Leaderboard';"></span>
+											<h3>Leaderboard</h3></a>
+										</section>
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<a href="#Organizers">
+											<span class="icon solid alt major fa-people-arrows" onclick="window.location.href='#Organizers';"></span>
+											<h3>Organizers</h3></a>
+										</section>
+									</div>
+								</div>
+							</div>
+						</section>
+							<section id="Introduction">
+								<h3>Introduction</h3>
+								<p style="text-align:justify">
+									We invite you to participate in the third  autoPET Challenge. The focus of this year's challenge is to further refine the automated segmentation of tumor lesions in Positron Emission Tomography/Computed Tomography (PET/CT) scans in a multitracer multicenter setting.
+
+Over the past decades, PET/CT has emerged as a pivotal tool in oncological diagnostics, management and treatment planning. In clinical routine, medical experts typically rely on a qualitative analysis of the PET/CT images, although quantitative analysis would enable more precise and individualized tumor characterization and  therapeutic decisions. A major barrier to clinical adoption  is  lesion segmentation, a necessary step for quantitative image analysis. Performed manually,  it's tedious, time-consuming and costly. Machine Learning offers the potential for fast and fully automated quantitative analysis of PET/CT images, as previously demonstrated in the first two autoPET challenges.
+
+Building upon the insights gained in these challenges, autoPET III expands the scope to address the critical need for models to generalize across multiple tracers and centers. To this end, we provide participants access to a more diverse PET/CT dataset containing  images of two different tracers - Prostate-Specific Membrane Antigen (PSMA) and Fluorodeoxyglucose (FDG) acquired from two different clinical sites (Figure). In this challenge, we give participants the chance to let their models compete in two award categories. In award category one, participants are tasked with developing robust segmentation algorithms applicable to two different tracers. In award category two, the significance of data quality and preprocessing in algorithm performance is addressed. Here, participants are encouraged to enhance our baseline model using innovative data pipelines, fostering advancements in data-centric approaches to automated PET/CT lesion segmentation.
+
+Join us in autoPET III to pave the way for robust deep-learning-based medical image analysis in PET/CT, optimizing diagnostics and personalizing therapy guidance in oncology.
+</p><p style="text-align:justify">
+AutoPET-III is hosted at the <a href="http://www.miccai.org/special-interest-groups/challenges/miccai-registered-challenges/" target="_blank">MICCAI 2024</a>: <a href="https://doi.org/10.5281/zenodo.10990932"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.10990932.svg"></a> 
+<br/>
+and supported by the <a href="https://www.eshi-society.org/">European Society for hybrid, molecular and translational imaging (ESHI)</a>. The challenge is the successor of <a href="autopeti.html">autoPET</a> and <a href="autopeti.html">autoPET II</a>. </p>
+
+								<hr />
+							</section>
+
+						<section id="Grand_challenge_sec">
+						<h3>Grand Challenge</h3>
+						<p style="text-align:justify"></p>
+						More information about the challenge can be found on <a href="https://autopet-iii.grand-challenge.org/">Grand Challenge</a>.
+						</p>
+						<hr/>
+						</section>
+
+
+						<section id="Task_sec">
+						<a class="anchor" id="Task"></a>
+						<h3>Task</h3>
+						<p style="text-align:justify">
+						Based on the insights of the last two autoPET challenges, we expand the scope of the autoPET III challenge to the primary task of achieving multitracer multicenter generalization of automated lesion segmentation.
+						To this end, we provide participants access to two different PET/CT training datasets: a large, annotated FDG-PET/CT dataset acquired at the University Hospital Tübingen, Germany (UKT), and a large, annotated PSMA-PET/CT dataset acquired at LMU Hospital, LMU Munich, Germany (LMU). The FDG-UKT dataset was already used in the autoPET I and II challenges. The PSMA-LMU dataset is new.  It encompasses 597 PET/CT volumes of male patients diagnosed with prostate carcinoma from LMU Hospital and shows a significant domain shift from the UKT training data (different tracers, different PET/CT scanners, and acquisition protocols). Algorithms will be tested on PSMA and FDG data from LMU and UKT, respectively.
+<br/>
+In addition, we will have a second award category, where participants are invited to submit our baseline model trained with their advanced data pipelines. This category is motivated by the observation that in autoPET I and II, data quality and handling in pre- and post-processing posed significant bottlenecks. Due to the rarity of publicly available PET data in the medical deep learning community, there is no standardized approach to preprocess these images (normalization, augmentations, etc.). The second award category will thus additionally promote data-centric approaches to automated PET/CT lesion segmentation.
+<br/>
+Testing will be performed on 200 studies (held-out test database). Test data will be drawn in part (50%) from the same sources and distributions as the training data. The other part will be drawn crosswise from the other center, i.e. PSMA from Tuebingen (25%) and FDG from LMU (25%).
+<div class="col-12"><span class="image fit"><img src="images/autopet3_dataset.png">	</span></div>
+<br/>
+I.) Accurate segmentation of FDG- and PSMA-avid tumor lesions in whole-body PET/CT images. The specific challenge in automated segmentation of lesions in PET/CT is to avoid false-positive segmentation of anatomical structures that have physiologically high uptake while capturing all tumor lesions. This task is particularly challenging in a multitracer setting since the physiological uptake partly differs for different tracers: e.g. brain, kidney, heart for FDG and e.g. liver, kidney, spleen, submandibular for PSMA.<br/>
+II.) Robust behavior of the to-be-developed algorithms with respect to moderate changes in the choice of tracer, acquisition protocol, or acquisition site. This will be reflected by the test data which will be drawn partly from the same distribution as the training data and partly from a different hospital with a similar, but slightly different acquisition setup.<br/>
+<br/>
+We encourage two submission tracks:<br/>
+1.) Best generalizing model: Best ranked model wins! The rules are simple: Train a model which generalizes well on FDG and PSMA data. Or train two models and combine them? You are free to choose.  You can use additional data which is publicly available. <br/>
+2.) Datacentrism: Best data-handling wins! In real-world applications, especially in the medical domain, data is messy. Improving models is not the only way to get better performance. You can also improve the dataset itself rather than treating it as fixed. This is the core idea of a popular research direction called Data-Centric AI (DCAI). Examples are outlier detection and removal (handling abnormal examples in dataset), error detection and correction (handling incorrect values/labels in dataset), data augmentation (adding examples to data to encode prior knowledge) and many more. If you are interested: a good resource to start is <a href="https://dcai.csail.mit.edu/">DCAI</a>. The rules are: Train a model which generalizes well on FDG and PSMA data but DO NOT alter the model architecture or get lost in configuration ablations. For that we will provide a second baseline <a href="https://github.com/ClinicalDataScience/autoPETIII/tree/main/datacentric-baseline">container</a> and a <a href="https://github.com/ClinicalDataScience/datacentric-challenge/tree/main">tutorial</a> how to use and train the model. You are not allowed to use any additional data and the datacentric baseline model will be in competition.<br/>
+
+						</p>
+						<hr/>
+						</section>
+
+						<section id="Database_sec">
+							<a class="anchor" id="Database"></a>
+							<h3>Database</h3>
+							<p style="text-align:justify">
+							The challenge cohort consists of patients with histologically proven malignant melanoma, lymphoma or lung cancer as well as negative control patients who were examined by FDG-PET/CT in two large medical centers (University Hospital Tübingen, Germany & University Hospital of the LMU in Munich, Germany).
+<br/>
+The FDG cohort comprises 501 patients diagnosed with histologically proven malignant melanoma, lymphoma, or lung cancer, along with 513 negative control patients. The PSMA cohort includes pre- and/or post-therapeutic PET/CT images of male individuals with prostate carcinoma, encompassing images with (537) and without PSMA-avid tumor lesions (60). Notably, the training datasets exhibit distinct age distributions: the FDG UKT cohort spans 570 male patients (mean age: 60; std: 16) and 444 female patients (mean age: 58; std: 16), whereas the PSMA MUC cohort tends to be older, with 378 male patients (mean age: 71; std: 8). Additionally, there are variations in imaging conditions between the FDG Tübingen and PSMA Munich cohorts, particularly regarding the types and number of PET/CT scanners utilized for acquisition. The PSMA Munich dataset was acquired using three different scanner types (Siemens Biograph 64-4R TruePoint, Siemens Biograph mCT Flow 20, and GE Discovery 690), whereas the FDG Tübingen dataset was acquired using a single scanner (Siemens Biograph mCT). 
+</p>
+<h4>PET/CT acquisition protocol</h4>
+<p style="text-align:justify">
+FDG dataset: Patients fasted at least 6 h prior to the injection of approximately 350 MBq 18F-FDG. Whole-body PET/CT images were acquired using a Biograph mCT PET/CT scanner (Siemens, Healthcare GmbH, Erlangen, Germany) and were initiated approximately 60 min after intravenous tracer administration. Diagnostic CT scans of the neck, thorax, abdomen, and pelvis (200 reference mAs; 120 kV) were acquired 90 sec after intravenous injection of a contrast agent (90-120 ml Ultravist 370, Bayer AG) or without contrast agent (in case of existing contraindications). PET Images were reconstructed iteratively (three iterations, 21 subsets) with Gaussian post-reconstruction smoothing (2 mm full width at half-maximum). Slice thickness on contrast-enhanced CT was 2 or 3 mm.
+<br/>
+PSMA dataset: Examinations were acquired on different PET/CT scanners (Siemens Biograph 64-4R TruePoint, Siemens Biograph mCT Flow 20, and GE Discovery 690). The imaging protocol mainly consisted of a diagnostic CT scan from the skull base to the mid-thigh using the following scan parameters: reference tube current exposure time product of 143 mAs (mean); tube voltage of 100kV or 120 kV for most cases, slice thickness of 3 mm for Biograph 64 and Biograph mCT, and 2.5 mm for GE Discovery 690 (except for 3 cases with 5 mm). Intravenous contrast enhancement was used in most studies (571), except for patients with contraindications (26).
+<br/>
+The whole-body PSMA-PET scan was acquired on average around 74 minutes after intravenous injection of 246 MBq 18F-PSMA (mean, 369 studies) or 214 MBq 68Ga-PSMA (mean, 228 studies), respectively. The PET data was reconstructed with attenuation correction derived from corresponding CT data. For GE Discovery 690 the reconstruction process employed a VPFX algorithm with voxel size  2.73 mm × 2.73 mm × 3.27 mm, for Siemens Biograph mCT Flow 20 a PSF+TOF algorithm (2 iterations, 21 subsets) with voxel size  4.07 mm × 4.07 mm × 3.00 mm, and for Siemens Biograph 64-4R TruePoint a PSF algorithm (3 iterations,  21 subsets) with voxel size  4.07 mm × 4.07 mm × 5.00 mm.
+</p>
+
+<h4>Training and test cohort</h4>
+<p style="text-align:justify">
+Training cases: 1,014 studies (900 patients) and 597 PSMA studies (378 patients)<br/>
+
+Test cases (final evaluation): 200 studies (50 FDG LMU, 50 FDG UKT, 50 PSMA LMU, 50 PSMA UKT)<br/>
+
+Test cases (preliminary evaluation): 5 studies<br/>
+A case (training or test case) consists of one 3D whole body FDG-PET volume, one corresponding 3D whole body CT volume and one 3D binary mask of manually segmented tumor lesions on FDG-PET of the size of the PET volume. CT and PET were acquired simultaneously on a single PET/CT scanner in one session; thus PET and CT are anatomically aligned up to minor shifts due to physiological motion.
+</p>
+<h4>Training set</h4>
+<p style="text-align:justify">
+Training data consists of 1,014 <a href="fdgpetct.html">FDG PET/CT</a> studies and 597 <a href="psmapetct.html">PSMA PET/CT</a> studies. We provide the merged data in <a href="https://github.com/MIC-DKFZ/nnUNet">nnUNet</a> format. The download will contain the resampled FDG and PSMA data as NiFTI files. It also contains the files obtained by running the nnUNet fingerprint extractor and a splits file which we use to design/train our baselines.
+<br/>NiFTI: 
+</p>
+<pre><code>
+|--- imagesTr
+	|--- tracer_patient1_study1_0000.nii.gz  (CT image resampled to PET)
+
+	|--- tracer_patient1_study1_0001.nii.gz  (PET image in SUV)
+	|--- ...
+|--- labelsTr
+	|--- tracer_patient1_study1.nii.gz       (manual annotations of tumor lesions)
+
+|--- dataset.json                             (nnUNet dataset description)
+|--- dataset_fingerprint.json                 (nnUNet dataset fingerprint)
+
+|--- splits_final.json                        (reference 5fold split)
+
+|--- psma_metadata.csv                        (metadata csv for psma)
+
+|--- fdg_metadata.csv                         (original metadata csv for fdg)
+</code></pre>
+
+<h5>FDG PET/CT</h5>
+<p style="text-align:justify">
+FDG PET/CT training data contains 1,014 studies acquired at the University Hospital Tübingen and is made publicly available on <a href="https://www.cancerimagingarchive.net/">TCIA</a> (as DICOM, NiFTI and HDF5 files). After download, you can convert the DICOM files to e.g. the NIfTI format using scripts provided <a href="https://github.com/lab-midas/TCIA_processing">here</a>.
+
+						</p>
+
+						DICOM:  <a href="https://doi.org/10.7937/gkr0-xv29"><img src="https://img.shields.io/badge/DOI-10.7937%2Fgkr0--xv29-blue"></a>
+						<br/>
+						NiFTI: 
+						<br/>
+						If you use this data, please cite:
+						<pre><code>Gatidis S, Kuestner T. A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions) [Dataset]. The Cancer Imaging Archive, 2022. DOI: 10.7937/gkr0-xv29
+</code></pre>
+
+<h5>PSMA PET/CT</h5>
+<p style="text-align:justify">
+PSMA PET/CT training data contains 597 studies acquired at the University Hospital Munich and is made publicly available on <a href="https://www.cancerimagingarchive.net/">TCIA</a>. After download, you can convert the DICOM files to e.g. the NIfTI format using scripts provided <a href="https://github.com/lab-midas/TCIA_processing">here</a>.
+</p>
+DICOM:  <a href=""><img src=""></a>
+						<br/>
+						NiFTI: 
+						<br/>
+						If you use this data, please cite:
+						<pre><code>Jeblick, K., et al. A whole-body PSMA-PET/CT dataset with manually annotated tumor lesions (PSMA-PET-CT-Lesions) (Version 1) [Dataset]. The Cancer Imaging Archive, 2024. DOI: 10.7937/r7ep-3x37
+</code></pre>
+
+
+<h4>Preliminary test set</h4>
+<p style="text-align:justify">
+	For the self-evaluation of participating pipelines, we provide access to a preliminary test set. The preliminary test set uses the same imaging data as the final test set, but consists of 5 studies only.
+<br/>
+	The access to this preliminary set is restricted and only possible through the docker containers submitted to the challenge, and only available for a limited time during the competition. The purpose of this is that participants can check the sanity of their approaches.
+</p>
+
+<h4>Final test set</h4>
+<p style="text-align:justify">
+	The final test set consists of 200 studies.
+</p>
+
+<h4>Data pre-processing and structure</h4>
+<p style="text-align:justify">
+In a pre-processing step, the TCIA DICOM files are resampled (CT to PET imaging resolution, i.e. same matrix size) and normalized (PET converted to standardized update values; SUV). 
+
+For the challenge, the pre-processed data will be provided in NifTI format. PET data is standardized by converting image units from activity counts to standardized uptake values (SUV). We recommend to use the resampled CT (CTres.nii.gz) and the PET in SUV (SUV.nii.gz). The mask (SEG.nii.gz) is binary with 1 indicating the lesion. The training and test database have the following structure:
+<pre><code>
+|--- Patient 1
+	|--- Study 1
+		 |--- SUV.nii.gz    (PET image in SUV)
+		 |--- CTres.nii.gz  (CT image resampled to PET)
+		 |--- CT.nii.gz     (Original CT image)
+		 |--- SEG.nii.gz    (Manual annotations of tumor lesions)
+		 |--- PET.nii.gz    (Original PET image as actictivity counts)
+	|--- Study 2            (Potential 2nd visit of same patient)
+		 |--- ...
+|--- Patient 2
+	|--- ...
+
+</code></pre>
+Each NiFTI file contains the respective image or the mask.
+An example case can be loaded as:
+<pre><code>	import nibabel as nib
+	SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-96698', 'SUV.nii.gz'))
+</code></pre>
+where <code>PETCT_0af7ffe12a</code> is the fully anonymized patient and <code>08-12-2005-NA-PET-CT Ganzkoerper primaer mit KM-96698</code> is the anonymized study (randomly generated study name, date is not reflecting scan date).
+</p>
+<h4>Annotation</h4>
+<p style="text-align:justify">
+FDG PET/CT training and test data from UKT was annotated by a Radiologist with 10 years of experience in Hybrid Imaging and experience in machine learning research. FDG PET/CT test data from LMU  was annotated by a radiologist with 8 years of experience in hybrid imaging. PSMA PET/CT training and test data from LMU as well as PSMA PET/CT test data from UKT was annotated by a single reader and reviewed by a radiologist with 5 years of experience in hybrid imaging. br/>
+The following annotation protocol was defined:<br/>
+Step 1: Identification of FDG-avid tumor lesions by visual assessment of PET and CT information together with the clinical examination reports.<br/>
+Step 2: Manual free-hand segmentation of identified lesions in axial slices.
+</p>
+<hr/>
+						</section>
+
+						<section id="Evaluation_sec">
+							<a class="anchor" id="Evaluation"></a>
+							<h3>Evaluation</h3>
+							<p style="text-align:justify">
+								Evaluation will be performed on held-out test cases of 200 patients. Test data will be drawn in part (50%) from the same sources and distributions as the training data, i.e. 50 PSMA-PET/CT scans from LMU, 50 FDG-PET/CT scans from UKT. The other part will be drawn crosswise from the other center, i.e. 50 PSMA-PET/CT scans from UKT and 50 FDG-PET/CT scans from LMU. 
+
+								A combination of two metrics reflecting the aims and specific challenges for the task of PET lesion segmentation:
+								<ol>
+									<li>Foreground Dice score of segmented lesions</li>
+									<li>Volume of false positive connected components that do not overlap with positives (=false positive volume)</li>
+									<li>Volume of positive connected components in the ground truth that do not overlap with the estimated segmentation mask (=false negative volume)</li>
+								</ol>
+								In case of test data that do not contain positives (no FDG-avid or PSMA-avid lesions), only metric 2 will be used. <br/>
+								A python script computing these evaluation metrics is provided under <a href="https://github.com/lab-midas/autoPET">https://github.com/lab-midas/autoPET</a>.
+								<br/>
+								<img src="images/metricautopet.png" width="50%"><br/>
+								<i>Figure: Example for the evaluation. The Dice score is calculated to measure the correct overlap between predicted lesion segmentation (blue) and ground truth (red). Additionally special emphasis is put on false positives by measuring their volume, i.e. large false positives like brain or bladder will result in a low score and false negatives by measuring their volume (i.e. entirely missed lesions).</i>
+								<br/>
+								
+							
+							</p>
+							<h4>Ranking</h4>
+							<p style="text-align:justify">
+							The submitted algorithms will be ranked according to:<br>
+
+							Step 1: Divide the test dataset into subsets based on center and tracer (i.e., PSMA LMU, PSMA UKT, FDG LMU, FDG UKT) and calculated the average metrics for Dice, FPV, and FNV within each subset. 
+							<br>
+							Step 2: Rank the subset averages across all algorithms. For each metric, we computed an intermediate average rank by averaging the ranks of the subsets. 
+							<br>
+							Step 3: Generate the overall rank by combining the three metric ranks using a weighting factor: Dice (0.5), FPV (0.25), and FNV (0.25). In case of equal ranking, the achieved Dice metric will be used as a tie break.
+</p>
+
+<h5>Award category 1: Modelcentric</h5>
+<p style="text-align:justify">
+Best ranked model wins!
+(for Dice: higher score = better, for FP or FN: lower volumes = better)
+</p>
+<h5>Award category 2: Datacentrism</h5>
+<p style="text-align:justify">
+Best data-handling wins!
+</p>
+
+							<hr/>
+						</section>
+
+
+						<section id="Codes_sec">
+							<a class="anchor" id="Codes"></a>
+							<h3>Codes and Models</h3>
+							<h4>Codes</h4>
+							<p style="text-align:justify">
+							<a href="https://github.com/lab-midas/autopet" class="icon brands alt fa-github"> https://github.com/lab-midas/autopet</a>
+							</p>
+							<h4>Models</h4>
+							<p style="text-align:justify">
+								Models and documentation of the submitted challenge algorithms can be found in the <a href="#Leaderboard">Leaderboard</a>.
+							</p>
+							<hr/>
+						</section>
+
+						<section id="Leaderboard_sec">
+							<a class="anchor" id="Leaderboard"></a>
+							<h3>Leaderboard</h3>
+							
+							<!--
+							<script>
+								fetch('./statistics/autopet1_participants.json')
+									.then(response => response.json())
+									.then(spec => {
+										vegaEmbed('#vis', spec).then(function(result) {
+											// Visualization rendered
+										}).catch(console.error);
+									});
+							</script>
+						<div id="vis"></div>
+						-->
+							<h4>Category 1: Modelcentric</h4>
+							<p style="text-align:justify">
+								<div class="table-wrapper">
+									<table>
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Team</th>
+												<th>Mean Position</th>
+												<th>Dice (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>False Negative Volume (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>False Positive Volume (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>Model</th>
+												<th>Documentation</th>
+											</tr>
+											<tr>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall rank</th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall rank</th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall rank</th>
+												<th></th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>LesionTracer</td>
+												<td>6.0625</td>
+												<td>0.6619 (3)</td>
+												<td>0.6433 (1)</td>
+												<td>0.7702 (7)</td>
+												<td>0.5711 (8)</td>
+												<td>4.75</td>
+												<td>1.7810 (1)</td>
+												<td>10.1590 (8)</td>
+												<td>0.4310 (1)</td>
+												<td>0.3658 (1)</td>
+												<td>2.75</td>
+												<td>1.7030 (1)</td>
+												<td>1.1123 (9)</td>
+												<td>3.0189 (23)</td>
+												<td>5.3053 (11)</td>
+												<td>12</td>
+												<td><a href="https://github.com/MIC-DKFZ/autopet-3-submission" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="https://arxiv.org/abs/2409.09478" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>IKIM</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>4</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>5</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>6</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>7</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>8</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>9</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>10</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>11</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>12</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>13</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>14</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>15</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>16</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>17</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</p>
+							<h4>Category 2: Datacentric</h4>
+							<p style="text-align:justify">
+								<div class="table-wrapper">
+									<table>
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Team</th>
+												<th>Mean Position</th>
+												<th>Dice (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>False Negative Volume (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>False Positive Volume (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>Model</th>
+												<th>Documentation</th>
+											</tr>
+											<tr>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall rank</th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall rank</th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall rank</th>
+												<th></th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>4</td>
+												<td></td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td> ()</td>
+												<td></td>
+												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</p>
+							<hr/>
+						</section>
+
+						<section id="Organizers_sec">
+							<a class="anchor" id="Organizers"></a>
+							<h3>Organizers</h3>
+							<p style="text-align:justify">
+								<div class="col-4 col-6-xsmall"><span class="image fit"><img src="images/lmu.png" alt="" style="width: 20%; height: auto;"/></span></div>
+University Hospital of the LMU in Munich
+<ul>
+<li> <a href="https://www.lmu-klinikum.de/radiologie/klinik-kompakt/arztlicher-dienst/55c11d6dafa8dc71"   style="" target="_blank">Clemens Cyran</a></li>
+<li> <a href="https://www.osc.uni-muehttps://www.lmu-klinikum.de/radiologie/forschung/clinical-data-science/0e8a3ac188dad3f9nchen.de/members/individual-members/ingrisch1/index.html"   style="" target="_blank">Michael Ingrisch</a></li>
+<li>Jakob Dexl</li>
+<li>Katharina Jeblick</li>
+<li>Balthasar Schachtner</li>
+<li>Andreas Mittermeier</li>
+<li>Anna Theresa Stüber</li>
+</ul>
+<br/>
+								<div class="row gtr-50 gtr-uniform">
+								<div class="col-4 col-6-xsmall"><span class="image fit"><img src="images/midaslab.png" alt="" style="width: 40%; height: auto;"/></span></div>
+								<div class="col-4 col-6-xsmall"><span class="image fit"><img src="images/ukt.png" alt="" style="width: 100%; height: auto;"/></span></div><br/>
+								</div><br/>
+								<a href="http://www.midaslab.org/" target="_blank">Medical Image and Data Analysis (MIDAS.lab)</a> 
+<ul>
+<li> <a href="https://is.mpg.de/person/sgatidis" target="_blank">Sergios Gatidis</a></li>
+<li>  <a href="https://www.medizin.uni-tuebingen.de/de/das-klinikum/mitarbeiter/profil/252"   target="_blank">Thomas Küstner</a></li>
+</ul>
+<br/>
+
+
+							</p>
+							<hr/>
+						</section>
+
+						
+					</div>
+				</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="https://github.com/lab-midas/autopet" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="mailto: autopetchallenge@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; autoPET organizers. All rights reserved.</li>
+				</ul>
+			</footer>
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
