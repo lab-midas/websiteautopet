@@ -54,7 +54,9 @@
 							<h2>PSMA PET/CT database</h2>
 						</header>
 
-
+						<div class="box alt">
+							<div class="col-12" style="text-align: center;"><img src="images/psmapetct.png" style="width: 100%;"></div>
+						</div>
 						<section id="Database_sec">
 							<a class="anchor" id="Database"></a>
 							<h3>Database</h3>
@@ -86,8 +88,8 @@ Training data consists of 597 studies acquired at the University Hospital Munich
 						NiFTI: 
 						<br/>
 						If you use this data, please cite:
-						<pre><code>Jeblick, K., et al. A whole-body PSMA-PET/CT dataset with manually annotated tumor lesions (PSMA-PET-CT-Lesions) (Version 1) [Dataset]. The Cancer Imaging Archive, 2024. DOI: 10.7937/r7ep-3x37
-						</code></pre>
+						<blockquote>Jeblick, K., et al. A whole-body PSMA-PET/CT dataset with manually annotated tumor lesions (PSMA-PET-CT-Lesions) (Version 1) [Dataset]. The Cancer Imaging Archive, 2024. DOI: 10.7937/r7ep-3x37
+						</blockquote>
 						<h4>Data pre-processing and structure</h4>
 						<p style="text-align:justify">
 						In a pre-processing step, the TCIA DICOM files are resampled (CT to PET imaging resolution, i.e. same matrix size) and normalized (PET converted to standardized update values; SUV). 
@@ -114,7 +116,7 @@ SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-P
 </code></pre>
 						where <code>PETCT_0af7ffe12a</code> is the fully anonymized patient and <code>08-12-2005-NA-PET-CT Ganzkoerper primaer mit KM-96698</code> is the anonymized study (randomly generated study name, date is not reflecting scan date).
 					<br/>
-					The direct downloaded NifTI container has the following structure:
+					The direct downloaded NifTI container contains the <a href="fdgpetct.html">FDG PET/CT</a> and PSMA PET/CT and is in nnUNet format with the following structure:
 <pre><code>
 	|--- imagesTr
 		|--- tracer_patient1_study1_0000.nii.gz  (CT image resampled to PET)
