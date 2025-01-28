@@ -162,8 +162,8 @@ Training data consists of 1,014 studies acquired at the University Hospital Tüb
 						NiFTI: 
 						<br/>
 						If you use this data, please cite:
-						<pre><code>Gatidis S, Kuestner T. A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions) [Dataset]. The Cancer Imaging Archive, 2022. DOI: 10.7937/gkr0-xv29
-</code></pre>
+						<blockquote>Gatidis S, Kuestner T. A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions) [Dataset]. The Cancer Imaging Archive, 2022. DOI: 10.7937/gkr0-xv29
+</blockquote>
 
 <h4>Preliminary test set</h4>
 <p style="text-align:justify">
@@ -198,8 +198,8 @@ For the challenge, the pre-processed data will be provided in NifTI format. PET 
 </code></pre>
 Each NiFTI file contains the respective image or the mask.
 An example case can be loaded as:
-<pre><code>	import nibabel as nib
-	SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-96698', 'SUV.nii.gz'))
+<pre><code>import nibabel as nib
+SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-96698', 'SUV.nii.gz'))
 </code></pre>
 where <code>PETCT_0af7ffe12a</code> is the fully anonymized patient and <code>08-12-2005-NA-PET-CT Ganzkoerper primaer mit KM-96698</code> is the anonymized study (randomly generated study name, date is not reflecting scan date).
 </p>
@@ -648,7 +648,7 @@ University Hospital of the LMU in Munich
 <li> <a href="https://www.lmu-klinikum.de/radiologie/klinik-kompakt/arztlicher-dienst/55c11d6dafa8dc71"   target="_blank">Matthias Fabritius</a></li>
 </ul>
 <div class="col-4 col-6-xsmall"><span class="image fit"><img src="images/UME_UKE.svg" alt="" style="width: 30%; height: auto;"/></span></div>
-University Hospital Essen¶
+University Hospital Essen
 <ul>
 <li> <a href="https://www.ikim.uk-essen.de/people"   style="" target="_blank">Jens Kleesiek</a></li>
 </ul>

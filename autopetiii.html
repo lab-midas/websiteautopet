@@ -204,8 +204,8 @@ FDG PET/CT training data contains 1,014 studies acquired at the University Hospi
 						NiFTI: 
 						<br/>
 						If you use this data, please cite:
-						<pre><code>Gatidis S, Kuestner T. A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions) [Dataset]. The Cancer Imaging Archive, 2022. DOI: 10.7937/gkr0-xv29
-</code></pre>
+						<blockquote>Gatidis S, Kuestner T. A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions) [Dataset]. The Cancer Imaging Archive, 2022. DOI: 10.7937/gkr0-xv29
+</blockquote>
 
 <h5>PSMA PET/CT</h5>
 <p style="text-align:justify">
@@ -216,8 +216,8 @@ DICOM:  <a href=""><img src=""></a>
 						NiFTI: 
 						<br/>
 						If you use this data, please cite:
-						<pre><code>Jeblick, K., et al. A whole-body PSMA-PET/CT dataset with manually annotated tumor lesions (PSMA-PET-CT-Lesions) (Version 1) [Dataset]. The Cancer Imaging Archive, 2024. DOI: 10.7937/r7ep-3x37
-</code></pre>
+						<blockquote>Jeblick, K., et al. A whole-body PSMA-PET/CT dataset with manually annotated tumor lesions (PSMA-PET-CT-Lesions) (Version 1) [Dataset]. The Cancer Imaging Archive, 2024. DOI: 10.7937/r7ep-3x37
+						</blockquote>
 
 
 <h4>Preliminary test set</h4>
@@ -253,8 +253,8 @@ For the challenge, the pre-processed data will be provided in NifTI format. PET 
 </code></pre>
 Each NiFTI file contains the respective image or the mask.
 An example case can be loaded as:
-<pre><code>	import nibabel as nib
-	SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-96698', 'SUV.nii.gz'))
+<pre><code>import nibabel as nib
+SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-96698', 'SUV.nii.gz'))
 </code></pre>
 where <code>PETCT_0af7ffe12a</code> is the fully anonymized patient and <code>08-12-2005-NA-PET-CT Ganzkoerper primaer mit KM-96698</code> is the anonymized study (randomly generated study name, date is not reflecting scan date).
 </p>
@@ -420,377 +420,319 @@ Best data-handling wins!
 											<tr>
 												<td>2</td>
 												<td>IKIM</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
+												<td>8.4062</td>
+												<td>0.6043 (16)</td>
+												<td>0.5828 (7)</td>
+												<td>0.7938 (3)</td>
+												<td>0.6176 (4)</td>
+												<td>7.5</td>
+												<td>2.7249 (3)</td>
+												<td>8.4799 (2)</td>
+												<td>1.0422 (8)</td>
+												<td>0.7334 (7)</td>
+												<td>5.125</td>
+												<td>4.9373 (17)</td>
+												<td>13.5</td>
 												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
 												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+											  </tr>
+											  <tr>
 												<td>3</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
+												<td>HussainAlasmawi</td>
+												<td>8.4375</td>
+												<td>0.6370 (6)</td>
+												<td>0.5725 (10)</td>
+												<td>0.7802 (5)</td>
+												<td>0.5854 (7)</td>
+												<td>7.0</td>
+												<td>2.4542 (2)</td>
+												<td>10.1997 (9)</td>
+												<td>0.6365 (2)</td>
+												<td>0.6265 (4)</td>
+												<td>4.25</td>
+												<td>3.3616 (13)</td>
+												<td>15.5</td>
 												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
 												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+											  </tr>
+											  <tr>
 												<td>4</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
+												<td>StockholmTrio</td>
+												<td>9.9375</td>
+												<td>0.5771 (21)</td>
+												<td>0.6010 (4)</td>
+												<td>0.7684 (8)</td>
+												<td>0.6326 (3)</td>
+												<td>9.0</td>
+												<td>8.4921 (11)</td>
+												<td>11.1818 (19)</td>
+												<td>1.1839 (12)</td>
+												<td>0.8581 (11)</td>
+												<td>13.25</td>
+												<td>1.9526 (9)</td>
+												<td>8.5</td>
 												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
 												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+											  </tr>
+											  <tr>
 												<td>5</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
+												<td>UIH_CRI_SIL</td>
+												<td>10.0625</td>
+												<td>0.6194 (14)</td>
+												<td>0.5937 (5)</td>
+												<td>0.7922 (4)</td>
+												<td>0.4111 (18)</td>
+												<td>10.25</td>
+												<td>4.6745 (6)</td>
+												<td>7.5758 (1)</td>
+												<td>0.9560 (7)</td>
+												<td>0.4422 (2)</td>
+												<td>4.0000</td>
+												<td>1.9500 (8)</td>
+												<td>15.75</td>
 												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
 												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+											  </tr>
+											  <tr>
 												<td>6</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
+												<td>AiraMatrix</td>
+												<td>11.0625</td>
+												<td>0.6253 (11)</td>
+												<td>0.5273 (20)</td>
+												<td>0.7556 (10)</td>
+												<td>0.6600 (2)</td>
+												<td>10.75</td>
+												<td>12.5127 (17)</td>
+												<td>15.6801 (28)</td>
+												<td>1.6105 (16)</td>
+												<td>1.0412 (16)</td>
+												<td>19.25</td>
+												<td>1.8776 (6)</td>
+												<td>3.5</td>
 												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
 												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+											  </tr>
+											  <tr>
 												<td>7</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+												<td>Lennonlychan</td>
+												<td>11.6250</td>
+												<td>0.6286 (9.0)</td>
+												<td>0.5302 (18.0)</td>
+												<td>0.7454 (13.0)</td>
+												<td>0.4775 (10.0)</td>
+												<td>12.5000</td>
+												<td>12.5980 (18.0)</td>
+												<td>10.5936 (11.0)</td>
+												<td>1.1815 (11.0)</td>
+												<td>0.8377 (10.0)</td>
+												<td>12.5000</td>
+												<td>1.8980 (7.0)</td>
+												<td>9.0000</td>
+											  </tr>
+											  <tr>
 												<td>8</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+												<td>QuantIF</td>
+												<td>11.6875</td>
+												<td>0.5800 (20.0)</td>
+												<td>0.5470 (13.0)</td>
+												<td>0.7649 (9.0)</td>
+												<td>0.6024 (6.0)</td>
+												<td>12.0000</td>
+												<td>6.7282 (8.0)</td>
+												<td>11.7130 (20.0)</td>
+												<td>2.2904 (20.0)</td>
+												<td>0.8140 (8.0)</td>
+												<td>14.0000</td>
+												<td>10.0465 (23.0)</td>
+												<td>8.7500</td>
+											  </tr>
+											  <tr>
 												<td>9</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+												<td>Shadab</td>
+												<td>12.0625</td>
+												<td>0.6159 (15.0)</td>
+												<td>0.5794 (9.0)</td>
+												<td>0.7270 (16.0)</td>
+												<td>0.4540 (13.0)</td>
+												<td>13.2500</td>
+												<td>11.4725 (15.0)</td>
+												<td>9.9943 (7.0)</td>
+												<td>0.7998 (6.0)</td>
+												<td>0.6623 (5.0)</td>
+												<td>8.2500</td>
+												<td>2.1096 (10.0)</td>
+												<td>13.5000</td>
+											  </tr>
+											  <tr>
 												<td>10</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+												<td>Zero_sugar</td>
+												<td>13.2500</td>
+												<td>0.6580 (4.0)</td>
+												<td>0.5446 (14.0)</td>
+												<td>0.7373 (15.0)</td>
+												<td>0.4271 (17.0)</td>
+												<td>12.5000</td>
+												<td>12.3233 (16.0)</td>
+												<td>11.0423 (17.0)</td>
+												<td>4.3788 (25.0)</td>
+												<td>1.6138 (22.0)</td>
+												<td>20.0000</td>
+												<td>0.5802 (2.0)</td>
+												<td>8.0000</td>
+											  </tr>
+											  <tr>
 												<td>11</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+												<td>BAMF</td>
+												<td>13.3125</td>
+												<td>0.6666 (1.0)</td>
+												<td>0.5299 (19.0)</td>
+												<td>0.6973 (22.0)</td>
+												<td>0.4672 (11.0)</td>
+												<td>13.2500</td>
+												<td>11.3668 (14.0)</td>
+												<td>14.7570 (26.0)</td>
+												<td>1.4420 (15.0)</td>
+												<td>2.3205 (26.0)</td>
+												<td>20.2500</td>
+												<td>3.1945 (11.0)</td>
+												<td>6.5000</td>
+											  </tr>
+											  <tr>
 												<td>12</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+												<td>datacentric baseline</td>
+												<td>15.3125</td>
+												<td>0.6362 (7.0)</td>
+												<td>0.5252 (22.0)</td>
+												<td>0.7254 (18.0)</td>
+												<td>0.4397 (15.0)</td>
+												<td>15.5000</td>
+												<td>15.6634 (21.0)</td>
+												<td>11.0583 (18.0)</td>
+												<td>5.0262 (26.0)</td>
+												<td>1.0951 (17.0)</td>
+												<td>20.5000</td>
+												<td>0.3659 (1.0)</td>
+												<td>9.7500</td>
+											  </tr>
+											  <tr>
 												<td>13</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+												<td>DING1122</td>
+												<td>18.7500</td>
+												<td>0.6281 (10.0)</td>
+												<td>0.5390 (15.0)</td>
+												<td>0.7267 (17.0)</td>
+												<td>0.1062 (27.0)</td>
+												<td>17.2500</td>
+												<td>14.0621 (19.0)</td>
+												<td>10.8470 (15.0)</td>
+												<td>1.3436 (14.0)</td>
+												<td>2.0637 (23.0)</td>
+												<td>17.7500</td>
+												<td>11.2634 (25.0)</td>
+												<td>22.7500</td>
+											  </tr>
+											  <tr>
 												<td>14</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+												<td>WukongRT</td>
+												<td>18.8750</td>
+												<td>0.6204 (13.0)</td>
+												<td>0.5206 (23.0)</td>
+												<td>0.7221 (19.0)</td>
+												<td>0.3386 (22.0)</td>
+												<td>19.2500</td>
+												<td>9.3683 (12.0)</td>
+												<td>11.7982 (21.0)</td>
+												<td>1.1040 (10.0)</td>
+												<td>1.0006 (15.0)</td>
+												<td>14.5000</td>
+												<td>6.7212 (20.0)</td>
+												<td>22.5000</td>
+											  </tr>
+											  <tr>
 												<td>15</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+												<td>HKURad</td>
+												<td>19.3750</td>
+												<td>0.6026 (17.0)</td>
+												<td>0.4955 (25.0)</td>
+												<td>0.6973 (21.0)</td>
+												<td>0.3496 (21.0)</td>
+												<td>21.0000</td>
+												<td>10.8671 (13.0)</td>
+												<td>12.9096 (24.0)</td>
+												<td>3.3258 (21.0)</td>
+												<td>1.1034 (18.0)</td>
+												<td>19.0000</td>
+												<td>4.8969 (16.0)</td>
+												<td>16.5000</td>
+											  </tr>
+											  <tr>
 												<td>16</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
-											<tr>
+												<td>max.sh</td>
+												<td>19.5312</td>
+												<td>0.4012 (26.0)</td>
+												<td>0.5811 (8.0)</td>
+												<td>0.7483 (11.5)</td>
+												<td>0.0285 (28.5)</td>
+												<td>18.5000</td>
+												<td>30.2820 (27.0)</td>
+												<td>9.2688 (3.0)</td>
+												<td>0.6570 (3.5)</td>
+												<td>2.1117 (24.5)</td>
+												<td>14.5000</td>
+												<td>38.8093 (28.0)</td>
+												<td>26.6250</td>
+											  </tr>
+											  <tr>
 												<td>17</td>
-												<td></td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td> ()</td>
-												<td></td>
-												<td><a href="" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
-												<td><a href="" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
-											</tr>
+												<td>Shrajanbhandary</td>
+												<td>21.7500</td>
+												<td>0.2669 (29.0)</td>
+												<td>0.6125 (3.0)</td>
+												<td>0.1875 (29.0)</td>
+												<td>0.3597 (20.0)</td>
+												<td>20.2500</td>
+												<td>32.2533 (28.0)</td>
+												<td>9.4384 (4.0)</td>
+												<td>54.5663 (29.0)</td>
+												<td>2.3478 (27.0)</td>
+												<td>22.0000</td>
+												<td>5.4561 (18.0)</td>
+												<td>24.5000</td>
+											  </tr>
+											  <tr>
+												<td>18</td>
+												<td>nnunet baseline</td>
+												<td>24.0000</td>
+												<td>0.5017 (24.0)</td>
+												<td>0.4741 (27.0)</td>
+												<td>0.6822 (25.0)</td>
+												<td>0.1512 (26.0)</td>
+												<td>25.5000</td>
+												<td>14.0836 (20.0)</td>
+												<td>12.5885 (23.0)</td>
+												<td>1.6795 (17.0)</td>
+												<td>0.9905 (14.0)</td>
+												<td>18.5000</td>
+												<td>11.7733 (26.0)</td>
+												<td>26.5000</td>
+											  </tr>
+											  <tr>
+												<td>19</td>
+												<td>TUM_ibbm</td>
+												<td>26.2500</td>
+												<td>0.2845 (28.0)</td>
+												<td>0.2031 (29.0)</td>
+												<td>0.3639 (28.0)</td>
+												<td>0.1891 (25.0)</td>
+												<td>27.5000</td>
+												<td>3.6257 (5.0)</td>
+												<td>28.4085 (29.0)</td>
+												<td>9.4993 (27.0)</td>
+												<td>3.4622 (29.0)</td>
+												<td>22.5000</td>
+												<td>231.9891 (29.0)</td>
+												<td>27.5000</td>
+											  </tr>
 										</tbody>
 									</table>
 								</div>

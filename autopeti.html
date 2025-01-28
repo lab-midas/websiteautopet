@@ -110,6 +110,19 @@ and supported by the <a href="https://www.eshi-society.org/autopet-2022/" target
 								<hr />
 							</section>
 
+							<section id="Publication_sec">
+								<h3>Publication</h3>
+								<p style="text-align:justify"></p>
+								The outcomes of the challenge are summarized in this publication: <a href="https://doi.org/10.1038/s42256-024-00912-9"><img src="https://img.shields.io/badge/DOI-10.1038%2Fs42256--024--00912--9-blue"></a>. 
+								<blockquote>
+									Gatidis, S., Früh, M., Fabritius, M.P., Gu, S., Nikolaou, K., La Fougère, C., Ye, J., He, J., Peng, Y., Bi, L., Ma, J., Wang, B., Zhang, J., Huang, Y., Heiliger, L., Marinov, Z., Stiefelhagen, R.,
+									Egger, J., Kleesiek, J., Sibille, L., Xiang, L., Bendazzoli, S., Astaraki, M., Ingrisch, M., Cyran, C.C., Küstner, T. Results from the autoPET challenge on fully automated lesion segmentation in oncologic PET/CT imaging. Nat Mach Intell 6, 1396–1405 (2024).
+								</blockquote>
+
+								</p>
+								<hr/>
+								</section>
+
 							<section id="Grand_challenge_sec">
 								<h3>Grand Challenge</h3>
 								<p style="text-align:justify"></p>
@@ -151,7 +164,7 @@ University Hospital of the LMU in Munich: Patients fasted at least 6 h prior to 
 <p style="text-align:justify">
 Training cases: 1,014 studies (900 patients)<br/>
 
-Test cases (final evaluation): 200 150 studies<br/>
+Test cases (final evaluation): 150 studies<br/>
 
 Test cases (preliminary evaluation): 5 studies<br/>
 A case (training or test case) consists of one 3D whole body FDG-PET volume, one corresponding 3D whole body CT volume and one 3D binary mask of manually segmented tumor lesions on FDG-PET of the size of the PET volume. CT and PET were acquired simultaneously on a single PET/CT scanner in one session; thus PET and CT are anatomically aligned up to minor shifts due to physiological motion.
@@ -168,8 +181,8 @@ Training data consists of 1,014 studies acquired at the University Hospital Tüb
 						NiFTI: 
 						<br/>
 						If you use this data, please cite:
-						<pre><code>Gatidis S, Kuestner T. A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions) [Dataset]. The Cancer Imaging Archive, 2022. DOI: 10.7937/gkr0-xv29
-</code></pre>
+						<blockquote>Gatidis S, Kuestner T. A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions) [Dataset]. The Cancer Imaging Archive, 2022. DOI: 10.7937/gkr0-xv29
+</blockquote>
 
 <h4>Preliminary test set</h4>
 <p style="text-align:justify">
@@ -203,8 +216,8 @@ For the challenge, the pre-processed data will be provided in NifTI format. PET 
 </code></pre>
 Each NiFTI file contains the respective image or the mask.
 An example case can be loaded as:
-<pre><code>	import nibabel as nib
-	SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-96698', 'SUV.nii.gz'))
+<pre><code>import nibabel as nib
+SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-96698', 'SUV.nii.gz'))
 </code></pre>
 where <code>PETCT_0af7ffe12a</code> is the fully anonymized patient and <code>08-12-2005-NA-PET-CT Ganzkoerper primaer mit KM-96698</code> is the anonymized study (randomly generated study name, date is not reflecting scan date).
 </p>
