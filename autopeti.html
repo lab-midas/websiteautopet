@@ -153,14 +153,14 @@ and supported by the <a href="https://www.eshi-society.org/autopet-2022/" target
 <br/>
 All PET/CT data within this challenge have been acquired on state-of-the-art PET/CT scanners (Siemens Biograph mCT, mCT Flow and Biograph 64, GE Discovery 690) using standardized protocols following international guidelines. CT as well as PET data are provided as 3D volumes consisting of stacks of axial slices. Data provided as part of this challenge consists of whole-body examinations. Usually, the scan range of these examinations extends from the skull base to the mid-thigh level. If clinically relevant, scans can be extended to cover the entire body including the entire head and legs/feet.
 </p>
-<h4>PET/CT acquisition protocol</h4>
+<h4>🎥 PET/CT acquisition protocol</h4>
 <p style="text-align:justify">
 University Hospital Tübingen: Patients fasted at least 6 h prior to the injection of approximately 350 MBq 18F-FDG. Whole-body PET/CT images were acquired using a Biograph mCT PET/CT scanner (Siemens, Healthcare GmbH, Erlangen, Germany) and were initiated approximately 60 min after intravenous tracer administration. Diagnostic CT scans of the neck, thorax, abdomen and pelvis (200 reference mAs; 120 kV) were acquired 90 sec after intravenous injection of a contrast agent (90–120 ml Ultravist 370, Bayer AG). PET Images were reconstructed iteratively (three iterations, 21 subsets) with Gaussian post-reconstruction smoothing (2 mm full width at half-maximum). Slice thickness on contrast-enhanced CT was 2 or 3 mm.
 <br/>
 University Hospital of the LMU in Munich: Patients fasted at least 6 h prior to the injection of approximately 250 MBq 18F-FDG. Whole-body PET/CT images were acquired on state-of-the-art PET/CT scanners (Siemens Biograph mCT, mCT Flow and Biograph 64, GE Discovery 690) and were initiated approximately 60 min after intravenous tracer administration. Diagnostic CT scans of the neck, thorax, abdomen and pelvis (100–190 mAs; 120 kV) were acquired 90 sec after weight-adapted intravenous injection of a contrast agent (Ultravist 300, Bayer AG or Imeron 350, Bracco Imaging Deutschland GmbH). PET Images were reconstructed iteratively (three iterations, 21 subsets) with Gaussian post-reconstruction smoothing (2 mm full width at half-maximum). Slice thickness on contrast-enhanced CT was 3 mm.
 </p>
 
-<h4>Training and test cohort</h4>
+<h4>⌛ Training and test cohort</h4>
 <p style="text-align:justify">
 Training cases: 1,014 studies (900 patients)<br/>
 
@@ -195,7 +195,7 @@ The access to this preliminary set is restricted and only possible through the d
 The final test set is consists of 150 studies with 100 studies originating from the same hospital as the training database (University Hospital Tübingen) and 50 are drawn from a different hospital (University Hospital of the LMU in Munich) with similar acquisition protocol to assess algorithm robustness and generalizability.
 </p>
 
-<h4>Data pre-processing and structure</h4>
+<h4>🗃️ Data pre-processing and structure</h4>
 <p style="text-align:justify">
 In a pre-processing step, the TCIA DICOM files are resampled (CT to PET imaging resolution, i.e. same matrix size) and normalized (PET converted to standardized update values; SUV). 
 
@@ -221,7 +221,7 @@ SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-P
 </code></pre>
 where <code>PETCT_0af7ffe12a</code> is the fully anonymized patient and <code>08-12-2005-NA-PET-CT Ganzkoerper primaer mit KM-96698</code> is the anonymized study (randomly generated study name, date is not reflecting scan date).
 </p>
-<h4>Annotation</h4>
+<h4>✒ Annotation</h4>
 <p style="text-align:justify">
 Two experts annotated training and test data: At the University Hospital Tübingen, a Radiologist with 10 years of experience in Hybrid Imaging and experience in machine learning research annotated all data. At the University Hospital of the LMU in Munich, a Radiologist with 5 years of of experience in Hybrid Imaging and experience in machine learning research annotated all data.
 <br/>

@@ -80,17 +80,18 @@ A case consists of one 3D whole body FDG-PET volume, one corresponding 3D whole 
 </p>
 <h5>Download</h5>
 <p style="text-align:justify"></p>
-Training data consists of 597 studies acquired at the University Hospital Munich and is made publicly available on <a href="https://www.cancerimagingarchive.net/">TCIA</a> (DICOM) under <a href="https://wiki.cancerimagingarchive.net/download/attachments/4556915/TCIA%20Restricted%20License%2020220519.pdf?version=1&modificationDate=1652965266604&api=v2">TCIA Restricted license</a>. The PSMA PET/CT data combined with the <a href="fdgpetct.html">FDG PET/CT data</a> on <a href="https://fdat.uni-tuebingen.de/">FDAT Research Data Repository</a> (NiFTI) under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>. Everyone (also non-participants of the challenge) are free to use the training data set in their respective work, given attribution in the publication. After download, you can convert the DICOM files to e.g. the NIfTI format using scripts provided <a href="https://github.com/lab-midas/TCIA_processing">here</a>.
+Training data consists of 597 studies acquired at the University Hospital Munich and is made publicly available on <a href="https://www.cancerimagingarchive.net/">TCIA</a> (DICOM) under <a href="https://wiki.cancerimagingarchive.net/download/attachments/4556915/TCIA%20Restricted%20License%2020220519.pdf?version=1&modificationDate=1652965266604&api=v2">TCIA Restricted license</a>. The PSMA PET/CT data combined with the <a href="fdgpetct.html">FDG PET/CT data</a> on <a href="https://fdat.uni-tuebingen.de/">FDAT Research Data Repository</a> (NiFTI) under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>. Everyone (also non-participants of the challenge) are free to use the training data set in their respective work, given attribution in the publication. If you plan to use the data in a commercial setting, please reach out to the <a href="mailto: autopetchallenge@gmail.com">organizers</a>. After download, you can convert the DICOM files to e.g. the NIfTI format using scripts provided <a href="https://github.com/lab-midas/TCIA_processing">here</a>.
 
 						</p>
 
-						DICOM:  <a href=""><img src=""></a>
+						DICOM:  <a href="https://doi.org/10.7937/r7ep-3x37 "><img src="https://img.shields.io/badge/DOI-10.7937%2Fr7ep--3x37-blue"></a>
 						<br/>
 						If you use this data, please cite:
 						<blockquote>Jeblick, K., et al. A whole-body PSMA-PET/CT dataset with manually annotated tumor lesions (PSMA-PET-CT-Lesions) (Version 1) [Dataset]. The Cancer Imaging Archive, 2024. DOI: 10.7937/r7ep-3x37
 						</blockquote>
+
 						<br/>
-						NiFTI: <a href=""><img src=""></a>
+						NiFTI: <a href="https://doi.org/10.57754/FDAT.6gjsg-zcg93"><img src="https://img.shields.io/badge/DOI-10.57754%2FFDAT.6gjsg--zcg93-blue"></a>
 						<br/>
 						If you use this data, please cite:
 						<blockquote>Gatidis S, Kuestner T. A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions) [Dataset]. The Cancer Imaging Archive, 2022. DOI: 10.7937/gkr0-xv29 <br/> <br/>
@@ -99,9 +100,9 @@ Training data consists of 597 studies acquired at the University Hospital Munich
 						</blockquote>
 						<h4>Data pre-processing and structure</h4>
 						<p style="text-align:justify">
-						In a pre-processing step, the TCIA DICOM files are resampled (CT to PET imaging resolution, i.e. same matrix size) and normalized (PET converted to standardized update values; SUV). 
+						If you perform the <a href="https://github.com/lab-midas/TCIA_processing">pre-processing step</a>, the TCIA DICOM files are resampled (CT to PET imaging resolution, i.e. same matrix size) and normalized (PET converted to standardized update values; SUV). 
 
-						For the challenge, the pre-processed data will be provided in NifTI format. PET data is standardized by converting image units from activity counts to standardized uptake values (SUV). We recommend to use the resampled CT (CTres.nii.gz) and the PET in SUV (SUV.nii.gz). The mask (SEG.nii.gz) is binary with 1 indicating the lesion. The training and test database have the following structure:
+						PET data is standardized by converting image units from activity counts to standardized uptake values (SUV). We recommend to use the resampled CT (CTres.nii.gz) and the PET in SUV (SUV.nii.gz). The mask (SEG.nii.gz) is binary with 1 indicating the lesion. The training and test database have the following structure:
 <pre><code>
 |--- Patient 1
 	|--- Study 1
@@ -123,7 +124,8 @@ SUV = nib.load(os.path.join(data_root_path, 'PETCT_0af7ffe12a', '08-12-2005-NA-P
 </code></pre>
 						where <code>PETCT_0af7ffe12a</code> is the fully anonymized patient and <code>08-12-2005-NA-PET-CT Ganzkoerper primaer mit KM-96698</code> is the anonymized study (randomly generated study name, date is not reflecting scan date).
 					<br/>
-					The direct downloaded NifTI container contains the <a href="fdgpetct.html">FDG PET/CT</a> and PSMA PET/CT and is in nnUNet format with the following structure:
+					<br/>
+					For the challenge, the pre-processed data is provided as <a href="https://doi.org/10.57754/FDAT.6gjsg-zcg93">NifTI files in nnUNet format</a> - combining the <a href="fdgpetct.html">FDG PET/CT</a> and PSMA PET/CT:
 <pre><code>
 	|--- imagesTr
 		|--- tracer_patient1_study1_0000.nii.gz  (CT image resampled to PET)

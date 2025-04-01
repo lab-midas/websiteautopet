@@ -1,0 +1,161 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "autosize": {"type": "fit", "contains": "padding"},
+    "background": "white",
+    "padding": 0,
+    "style": "cell",
+    "encode": {
+      "update": {"stroke": {"value": "transparent"}, "fill": {"value": "#c9eeff"}}
+    },
+    "data": [
+      {
+        "name": "source_1",
+        "values": [
+          {"id": "156", "participants": 188},
+          {"id": "840", "participants": 53},
+          {"id": "356", "participants": 38},
+          {"id": "276", "participants": 36},
+          {"id": "410", "participants": 25},
+          {"id": "250", "participants": 17},
+          {"id": "124", "participants": 16},
+          {"id": "528", "participants": 16},
+          {"id": "036", "participants": 12},
+          {"id": "826", "participants": 8},
+          {"id": "040", "participants": 7},
+          {"id": "586", "participants": 7},
+          {"id": "158", "participants": 7},
+          {"id": "752", "participants": 7},
+          {"id": "756", "participants": 7},
+          {"id": "364", "participants": 6},
+          {"id": "392", "participants": 6},
+          {"id": "344", "participants": 6},
+          {"id": "056", "participants": 5},
+          {"id": "620", "participants": 5},
+          {"id": "643", "participants": 5},
+          {"id": "704", "participants": 5},
+          {"id": "724", "participants": 4},
+          {"id": "076", "participants": 4},
+          {"id": "050", "participants": 4},
+          {"id": "788", "participants": 4},
+          {"id": "398", "participants": 3},
+          {"id": "300", "participants": 3},
+          {"id": "705", "participants": 3},
+          {"id": "380", "participants": 3},
+          {"id": "484", "participants": 3},
+          {"id": "360", "participants": 2},
+          {"id": "376", "participants": 2},
+          {"id": "208", "participants": 2},
+          {"id": "642", "participants": 2},
+          {"id": "440", "participants": 2},
+          {"id": "792", "participants": 2},
+          {"id": "400", "participants": 2},
+          {"id": "004", "participants": 1},
+          {"id": "348", "participants": 1},
+          {"id": "032", "participants": 1},
+          {"id": "368", "participants": 1},
+          {"id": "012", "participants": 1},
+          {"id": "112", "participants": 1},
+          {"id": "044", "participants": 1},
+          {"id": "807", "participants": 1},
+          {"id": "446", "participants": 1},
+          {"id": "566", "participants": 1},
+          {"id": "246", "participants": 1},
+          {"id": "578", "participants": 1},
+          {"id": "784", "participants": 1},
+          {"id": "616", "participants": 1},
+          {"id": "804", "participants": 1},
+          {"id": "634", "participants": 1}
+        ]
+      },
+      {
+        "name": "source_0",
+        "url": "https://d19vzld1wvxwbr.cloudfront.net/static/js/world-atlas/countries-110m.ce164fa76c3b.json",
+        "format": {"type": "topojson", "feature": "countries", "parse": {}},
+        "transform": [
+          {
+            "type": "formula",
+            "expr": "datum[\"properties\"] && datum[\"properties\"][\"name\"]",
+            "as": "properties.name"
+          },
+          {
+            "type": "lookup",
+            "from": "source_1",
+            "key": "id",
+            "fields": ["id"],
+            "values": ["participants"],
+            "default": 0.01
+          },
+          {
+            "type": "filter",
+            "expr": "isValid(datum[\"participants\"]) && isFinite(+datum[\"participants\"])"
+          }
+        ]
+      }
+    ],
+    "projections": [
+      {
+        "name": "projection",
+        "size": {"signal": "[width, height]"},
+        "fit": {"signal": "data('source_0')"},
+        "type": "equalEarth"
+      }
+    ],
+    "signals": [
+      {
+        "name": "width",
+        "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 200",
+        "on": [
+          {
+            "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 200",
+            "events": "window:resize"
+          }
+        ]
+      },
+      {
+        "name": "height",
+        "init": "isFinite(containerSize()[1]) ? containerSize()[1] : 200",
+        "on": [
+          {
+            "update": "isFinite(containerSize()[1]) ? containerSize()[1] : 200",
+            "events": "window:resize"
+          }
+        ]
+      }
+    ],
+    "marks": [
+      {
+        "name": "marks",
+        "type": "shape",
+        "style": ["geoshape"],
+        "from": {"data": "source_0"},
+        "encode": {
+          "update": {
+            "stroke": {"value": "#757575"},
+            "strokeWidth": {"value": 0.5},
+            "fill": [
+              {"test": "datum['participants'] === 0.01", "value": "#eee"},
+              {"scale": "color", "field": "participants"}
+            ],
+            "tooltip": {
+              "signal": "{\"Location\": isValid(datum[\"properties.name\"]) ? datum[\"properties.name\"] : \"\"+datum[\"properties.name\"], \"Participants\": format(datum[\"participants\"], \".0f\")}"
+            },
+            "ariaRoleDescription": {"value": "geoshape"},
+            "description": {
+              "signal": "\"participants: \" + (format(datum[\"participants\"], \"\")) + \"; Location: \" + (isValid(datum[\"properties.name\"]) ? datum[\"properties.name\"] : \"\"+datum[\"properties.name\"]) + \"; Participants: \" + (format(datum[\"participants\"], \".0f\"))"
+            }
+          }
+        },
+        "transform": [{"type": "geoshape", "projection": "projection"}]
+      }
+    ],
+    "scales": [
+      {
+        "name": "color",
+        "type": "log",
+        "domain": {"data": "source_0", "field": "participants"},
+        "range": {"scheme": "viridis"},
+        "domainMin": 1,
+        "interpolate": "hcl"
+      }
+    ]
+  }
