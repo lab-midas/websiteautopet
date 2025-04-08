@@ -150,10 +150,9 @@
 
 					<h4>Task 2: Longitudinal CT screening</h4>
 					<p style="text-align:justify">
-						In Task 2, we explore the segmentation performance to detect lesions in a follow-up scan if provided with a lesion segmentation in the baseline scan together with or without clicks of the lesions in the follow-up scan. We investigate the segmentation performance in a novel provided longitudinal CT database of >300 cases - similar to autoPET I. The specific challenge lies in the correct identification of a lesion between baseline and follow-up scan under therapy. A tumor can change shape (progression or regression), disappear (complete response) or new lesions can appear (metastasis). In addition, in some cases the differentiation between malignant and benign tissue can be difficult.
+						In Task 2, we explore the performance of lesion segmentation in a follow-up scenario with additional information from a previous CT scan. More precisely, the CT images of the baseline and follow-up scan are provided together with the baseline segmentation mask, the lesion centers in the baseline images and the propagated lesion centers in the follow-up images. We investigate the segmentation performance in a novel longitudinal whole-body CT database of >300 cases - similar to autoPET I. A specific challenge lies in the high variability of lesion spread. The tumors can change shape (progression or regression), split or merge, disappear (complete response) or newly appear (metastasis). In addition, in some cases the differentiation between malignant and benign tissue can be difficult.
 
-We will study the behaviour over 2 interactive segmentation steps. In the first step, only the CT images of the baseline and follow-up scan are provided together with the baseline segmentation mask (for tumor localization). For the first step no tumor click is given, i.e. empty lesion click file. In the second step, the CT images (baseline and follow-up), the baseline segmentation mask and an additional pre-simulated tumor click in the follow-up CT scan are provided. We encourage the usage of registration algorithms to align the baseline and follow-up CT scan, i.e. to transform the baseline lesion (from baseline segmentation) into the follow-up CT scan and target region (click), but this is not mandatory. 
-					</p>	
+We aim to investigate to what extent the findings from a previous time point facilitate the task of lesion segmentation in the follow-up. The CT images of the baseline and follow-up scan are provided together with the baseline segmentation mask (for tumor localization). An additional pre-simulated tumor click in the baseline and follow-up CT scan are provided. We encourage the usage of registration algorithms to better align the baseline and follow-up CT images, i.e. to transform the baseline lesion (from baseline segmentation) into the follow-up CT scan and target region, but this is not mandatory. The click is represented as a set of 3D coordinates on the follow-up CT image. 					</p>	
 						</hr>
 						</section>
 
@@ -368,14 +367,11 @@ In case of test data that do not contain positives (no lesions), only metric 2 w
 							<ol>
 								<li>DSC @last: Interaction Efficacy of DSC with given lesion center in follow-up scan</li>
 								<li>FPV @last: Interaction Efficacy of FPV with given lesion center in follow-up scan</li>
-								<li>FNV @last: Interaction Efficacy of FNVwith given lesion center in follow-up scan</li>
-								<li>DSC @init: Interaction Efficacy of DSC without given lesion center in follow-up scan</li>
-								<li>FPV @init: Interaction Efficacy of FPV without given lesion center in follow-up scan</li>
-								<li>FNV @init: Interaction Efficacy of FNV without given lesion center in follow-up scan</li>
+								<li>FNV @last: Interaction Efficacy of FNV with given lesion center in follow-up scan</li>
 							</ol>
-							DSC, FPV, and FNV will be evaluated with (metrics 1-3) and without (metrics 4-6) standardized and pre-simulated tumor lesion center click in the follow-up scan (one click per lesion). The lesion center click is represented as a set of 3D coordinates matching the image.
+							DSC, FPV, and FNV will be evaluated with standardized and pre-simulated tumor lesion center click in the follow-up scan (one click per lesion). The lesion center click is represented as a set of 3D coordinates matching the image.
 							<br/><br/>
-							In case of test data that do not contain positives (no lesions), only metric 2 and 5 will be used.
+							In case of test data that do not contain positives (no lesions), only metric 2 will be used.
 							</p>
 
 							<h4>Ranking</h4>
@@ -387,7 +383,7 @@ In case of test data that do not contain positives (no lesions), only metric 2 w
 
 								<h5>Task 2: Longitudinal CT screening</h5>
 								<p style="text-align:justify">
-									For each test case, we will compute the average metrics for Interaction Efficacy with (DSC @last: higher = better, FPV @last: lower = better, FNV @last: lower = better) and without (DSC @init: higher = better, FPV @init: lower = better, FNV @init: lower = better) provided center lesion click, producing six averaged metrics per submission. Then, we compute seperate rankings for each of the six averaged metrics. Finally, we generated the overall rank by combining the six metric ranks using a weighting factor: DSC @last (0.25), FPV @last (0.125), FNV @last (0.125), DSC @init (0.25), FPV @init (0.125), FNV @init (0.125).
+									For each test case, we will compute the average metrics for Interaction Efficacy (DSC @last: higher = better, FPV @last: lower = better, FNV @last: lower = better) with provided center lesion click, producing three averaged metrics per submission. Then, we compute seperate rankings for each of the three averaged metrics. Finally, we generated the overall rank by combining the three metric ranks using a weighting factor: DSC @last (0.5), FPV @last (0.25), FNV @last (0.25).
 								</p>
 
 							<hr/>
