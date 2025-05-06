@@ -54,13 +54,85 @@
 							<h2>Longitudinal CT database</h2>
 						</header>
 
+						<div class="box alt">
+							<div class="col-12" style="text-align: center;"><img src="images/longitudinalct.png" style="width: 40%;"></div>
+						</div>
 
 						<section id="Database_sec">
 							<a class="anchor" id="Database"></a>
 							<h3>Database</h3>
 							<p style="text-align:justify">
-							TBA
+								The cohort consists of melanoma patients undergoing longitudinal CT screening examinations in an oncologic context for diagnosis, staging, or therapy response assessment. The CT cohort comprises whole-body imaging in 300 patients (female: 170, mean age: 64y, std age: 15y) of two imaging timepoints: baseline staging, and follow-up scans after therapy treatment. Training data was acquired at a single site (UKT).
+								All CT examinations were acquired on state-of-the-art CT scanners using standardized protocols following international guidelines. The imaging protocol includes whole-body CT imaging, typically extending from the skull base to mid-thigh level, with possible extensions to include the entire body when clinically relevant (all data is defaced). The dataset provides anonymized NIfTI files of all CT scans along with manually annotated segmentation masks of malignant tumors, including primary tumors and metastases. The lesion center of gravity is provided for each individual lesion in the volume (baseline and follow-up scans). The tumors can change shape (progression or regression), split or merge, disappear (complete response) or newly appear (metastasis). Additionally, scripts for image processing and conversion to different file formats (DICOM, mha, hdf5) are available. 
+								<br/>
+								The dataset is designed to facilitate the development and evaluation of AI-based lesion detection and segmentation algorithms in longitudinal CT imaging for oncology applications. The inclusion of multiple imaging timepoints allows for the assessment of lesion progression and therapy response, providing a clinically realistic dataset for algorithm training and validation.
+							</p>
+							<h4>CT acquisition protocol</h4>
+							<p style="text-align:justify">
+								Patients were scanned with the inhouse whole-body staging protocol for a scan field from skull base to the middle of the femur with patients laid in a supine position, arms raised above the head. Scanning was performed during the portal-venous phase after administration of body-weight adapted contrast medium through the cubital vein. Attenuation-based tube current modulation (CARE Dose, reference mAs 240) and tube voltage (120 kV) were applied. The following scan parameters were used:<br/>
+								SOMATOM Force: collimation 128 × 0.6 mm, rotation time 0.5 s, pitch 0.6<br/>
+								Sensation64: collimation 64 × 0.6 mm, rotation time 0.5 s, pitch 0.6<br/>
+								SOMATOM Definition Flash: collimation 128 × 0.6 mm, rotation time 0.5 s, pitch 1.0<br/>
+								SOMATOM Definition AS: collimation 64 × 0.6 mm, rotation time 0.5 s, pitch 0.6<br/>
+								Biograph128: collimation 128 × 0.6 mm, rotation time 0.5 s, pitch 0.8<br/>
+								Slice thickness as well as increment were set to 3 mm. A medium smooth kernel was used for image reconstruction.
+							</p>
+							<h4>Cohort</h4>
+							<p style="text-align:justify">
+								Training cases: 300 studies (300 patients) <br/>
+																
+								A case consists of one 3D CT volume, and one 3D binary mask of manually segmented tumor lesions on the CT volume, in two imaging sessions/time points: baseline and follow-up after therapy treatment.
+							</p>
+							<h5>Download</h5>
+							<p style="text-align:justify">
+								Training data consists of 300 studies acquired at the University Hospital Tübingen and is made publicly available on <a href="https://fdat.uni-tuebingen.de/">FDAT Research Data Repository</a> (NiFTI) under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>. Everyone (also non-participants of the challenge) are free to use the training data set in their respective work, given attribution in the publication. If you plan to use the data in a commercial setting, please reach out to the <a href="mailto: autopetchallenge@gmail.com">organizers</a>.
 						</p>
+						NiFTI: <a href="https://doi.org/10.57754/FDAT.qwsry-7t837"><img src="https://img.shields.io/badge/DOI-10.57754%2FFDAT.qwsry--7t837-blue"></a>
+						<br/>
+						<p/>
+
+						<h4>Data pre-processing and structure</h4>
+						<p style="text-align:justify">
+							The CT is provided in Hounsfield units. The mask is in integer indicating the individual lesions. Filenames start with a unique patient ID (10 digits). The training and test database have the following structure:</p>
+<pre><code>
+|--- inputsTr
+	|--- c6f057b865.csv                          (lesion information for patient)     
+	|--- c6f057b865_BL_00.json                   (lesion center of gravity per lesion in baseline CT; Grand-Challenge JSON format)            
+	|--- c6f057b865_BL_img_BL_img_00.nii.gz      (CT baseline image)     
+	|--- c6f057b865_BL_mask_BL_img_00.nii.gz     (CT baseline lesion mask, integer mask)        
+	|--- c6f057b865_FU_00.json                   (lesion center of gravity per lesion in first follow-up CT; Grand-Challenge JSON format)     
+	|--- c6f057b865_FU_01.json                   (lesion center of gravity per lesion in second follow-up CT; Grand-Challenge JSON format; if available)     
+	|--- c6f057b865_FU_img_FU_img_00.nii.gz      (CT follow-up image, first body region)     
+	|--- c6f057b865_FU_img_FU_img_01.nii.gz      (CT follow-up image, second body region; if available)           
+	|--- ...  
+|--- targetsTr            
+	|--- c6f057b865_FU_mask_FU_img_00.nii.gz     (CT follow-up lesion mask of first body region, integer mask)     
+	|--- c6f057b865_FU_mask_FU_img_01.nii.gz     (CT follow-up lesion mask of second body region, integer mask; if available)       
+	|--- ...  
+</code></pre>
+
+<h5>CSV file</h5>
+<p style="text-align:justify">
+The CSV file contains the following columns:
+<ul>
+	<li>lesion_id: Continous ID count in the respective patient</li>
+	<li>cog_bl: Lesion center of gravity in baseline image as 3D pixel coordinates</li>
+	<li>img_id_bl: baseline image ID (either 0 or 1)</li>
+	<li>cog_propagated: Lesion center of gravity (as 3D pixel coordinates) propagated from baseline to follow-up scan using a conventional registration (not available for all lesions)</li>
+	<li>cog_fu: Lesion center of gravitiy in follow-up image as 3D pixel coordinates</li>
+	<li>img_id_fu: follow-up image ID (either 0 or 1)</li>
+	<li>lesion_type: Anatomical lesion location</li>
+</ul>
+</p>
+
+<h4>Annotation</h4>
+<p style="text-align:justify">
+	All data were manually annotated by two experienced radiologists. To this end, tumor lesions were manually segmented on the CT image data using dedicated software.<br/>
+	The following annotation protocol was defined:<br/>
+	Step 1: Identification of tumor lesions by visual assessment of CT information together with the clinical examination reports.<br/>
+	Step 2: Manual free-hand segmentation of identified lesions in axial slices.<br/>
+	Step 3: Baseline and follow-up segmentations are viewed side-by-side to mark the matching lesions.
+</p>
 						</section>				
 
 						
