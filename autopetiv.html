@@ -260,7 +260,9 @@ The cohort consists of melanoma patients undergoing longitudinal CT screening ex
 
 <h5>📥 Download</h5>
 <p style="text-align:justify">
-Database release starting soon.
+Training data consists of 300 studies acquired at the University Hospital Tübingen and is made publicly available on <a href="https://fdat.uni-tuebingen.de/">FDAT Research Data Repository</a> (NiFTI) under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>. Everyone (also non-participants of the challenge) are free to use the training data set in their respective work, given attribution in the publication. If you plan to use the data in a commercial setting, please reach out to the <a href="mailto: autopetchallenge@gmail.com">organizers</a>.
+<br/>
+NiFTI: <a href="https://doi.org/10.57754/FDAT.qwsry-7t837"><img src="https://img.shields.io/badge/DOI-10.57754%2FFDAT.qwsry--7t837-blue"></a>						
 </p>
 
 <h5>🎥 CT acquisition protocol</h5>
@@ -301,7 +303,38 @@ The access to this preliminary set is restricted and only possible through the d
 </p>
 
 <h5>🗃️ Data structure</h5>
+<p style="text-align:justify">
+The training and test database have the following structure:</p>
+<pre><code>
+|--- inputsTr
+	|--- c6f057b865.csv                          (lesion information for patient)     
+	|--- c6f057b865_BL_00.json                   (lesion center of gravity per lesion in baseline CT; Grand-Challenge JSON format)            
+	|--- c6f057b865_BL_img_BL_img_00.nii.gz      (CT baseline image)     
+	|--- c6f057b865_BL_mask_BL_img_00.nii.gz     (CT baseline lesion mask, integer mask)        
+	|--- c6f057b865_FU_00.json                   (lesion center of gravity per lesion in first follow-up CT; Grand-Challenge JSON format)     
+	|--- c6f057b865_FU_01.json                   (lesion center of gravity per lesion in second follow-up CT; Grand-Challenge JSON format; if available)     
+	|--- c6f057b865_FU_img_FU_img_00.nii.gz      (CT follow-up image, first body region)     
+	|--- c6f057b865_FU_img_FU_img_01.nii.gz      (CT follow-up image, second body region; if available)           
+	|--- ...  
+|--- targetsTr            
+	|--- c6f057b865_FU_mask_FU_img_00.nii.gz     (CT follow-up lesion mask of first body region, integer mask)     
+	|--- c6f057b865_FU_mask_FU_img_01.nii.gz     (CT follow-up lesion mask of second body region, integer mask; if available)       
+	|--- ...  
+</code></pre>
 
+<h6>CSV file</h6>
+<p style="text-align:justify">
+The CSV file contains the following columns:
+<ul>
+	<li>lesion_id: Continous ID count in the respective patient</li>
+	<li>cog_bl: Lesion center of gravity in baseline image as 3D pixel coordinates</li>
+	<li>img_id_bl: baseline image ID (either 0 or 1)</li>
+	<li>cog_propagated: Lesion center of gravity (as 3D pixel coordinates) propagated from baseline to follow-up scan using a conventional registration (not available for all lesions)</li>
+	<li>cog_fu: Lesion center of gravitiy in follow-up image as 3D pixel coordinates</li>
+	<li>img_id_fu: follow-up image ID (either 0 or 1)</li>
+	<li>lesion_type: Anatomical lesion location</li>
+</ul>
+</p>
 <h5>⚙️ Data pre-processing</h5>
 <p style="text-align:justify">
 	Please note, that the submission and evaluation interfaces provided by grand-challenge are working with <code>.mha</code> data. Hence, you will need to read the test images in your submission from an <code>.mha</code> file. We already provide interfaces and code for this in the <a href="https://github.com/lab-midas/autoPETCTIV">baseline algorithms.</a>
@@ -375,8 +408,8 @@ In case of test data that do not contain positives (no lesions), only metric 2 w
 							</p>
 
 							<h4>Ranking</h4>
+							<h5>Task 1: Single-staging whole-body PET/CT</h5>
 							<div class="col-12"><span class="image fit"><img src="images/autopet4_ranking.png">	</span></div>
-								<h5>Task 1: Single-staging whole-body PET/CT</h5>
 								<p style="text-align:justify">
 								We divide the test dataset into subsets based on center and tracer (i.e., PSMA LMU, PSMA UKT, FDG LMU, FDG UKT) and calculated the average metrics for Interaction Efficacy (DSC @last, FPV @last, FNV @last) and the Interaction Utilization (AUC-DSC: higher = better, AUC-FPV: lower = better, AUC-FNV: lower = better) within each subset. Then, we average the subset averages. For each of the six metrics, we compute the rank over all submissions. Finally, we generated the overall rank by combining the six metric ranks using a weighting factor: DSC @last (0.25), FPV @last (0.125), FNV @last (0.125), AUC-DSC (0.25), AUC-FPV (0.125), AUC-FNV (0.125).
 								</p>
@@ -455,6 +488,7 @@ University Hospital Mainz
 <ul>
 <li><a href="https://www.unimedizin-mainz.de/neuroradiologie/unser-team/othman.html%20target=">Ahmed Othman</a></li>   
 <li>Antoine Sanner</li>
+<li><a href="https://www.unimedizin-mainz.de/radiologie/mitarbeiter/aerzte-wissenschaftler.html">Dirk Graafen</a></li>
 </ul>
 <br/>
 
