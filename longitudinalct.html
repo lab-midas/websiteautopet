@@ -96,18 +96,18 @@
 							The CT is provided in Hounsfield units. The mask is in integer indicating the individual lesions. Filenames start with a unique patient ID (10 digits). The training and test database have the following structure:</p>
 <pre><code>
 |--- inputsTr
-	|--- c6f057b865.csv                          (lesion information for patient)     
-	|--- c6f057b865_BL_00.json                   (lesion center of gravity per lesion in baseline CT; Grand-Challenge JSON format)            
-	|--- c6f057b865_BL_img_BL_img_00.nii.gz      (CT baseline image)     
-	|--- c6f057b865_BL_mask_BL_img_00.nii.gz     (CT baseline lesion mask, integer mask)        
-	|--- c6f057b865_FU_00.json                   (lesion center of gravity per lesion in first follow-up CT; Grand-Challenge JSON format)     
-	|--- c6f057b865_FU_01.json                   (lesion center of gravity per lesion in second follow-up CT; Grand-Challenge JSON format; if available)     
-	|--- c6f057b865_FU_img_FU_img_00.nii.gz      (CT follow-up image, first body region)     
-	|--- c6f057b865_FU_img_FU_img_01.nii.gz      (CT follow-up image, second body region; if available)           
+	|--- c6f057b865.csv                   (lesion information for patient)     
+	|--- c6f057b865_BL_00.json            (lesion center of gravity per lesion in baseline CT; Grand-Challenge JSON format)            
+	|--- c6f057b865_BL_img_00.nii.gz      (CT baseline image)     
+	|--- c6f057b865_BL_mask_00.nii.gz     (CT baseline lesion mask, integer mask)        
+	|--- c6f057b865_FU_00.json            (lesion center of gravity per lesion in first follow-up CT; Grand-Challenge JSON format)     
+	|--- c6f057b865_FU_01.json            (lesion center of gravity per lesion in second follow-up CT; Grand-Challenge JSON format; if available)     
+	|--- c6f057b865_FU_img_00.nii.gz      (CT follow-up image, first body region)     
+	|--- c6f057b865_FU_img_01.nii.gz      (CT follow-up image, second body region; if available)           
 	|--- ...  
 |--- targetsTr            
-	|--- c6f057b865_FU_mask_FU_img_00.nii.gz     (CT follow-up lesion mask of first body region, integer mask)     
-	|--- c6f057b865_FU_mask_FU_img_01.nii.gz     (CT follow-up lesion mask of second body region, integer mask; if available)       
+	|--- c6f057b865_FU_mask_00.nii.gz     (CT follow-up lesion mask of first body region, integer mask)     
+	|--- c6f057b865_FU_mask_01.nii.gz     (CT follow-up lesion mask of second body region, integer mask; if available)       
 	|--- ...  
 </code></pre>
 
@@ -117,11 +117,19 @@ The CSV file contains the following columns:
 <ul>
 	<li>lesion_id: Continous ID count in the respective patient</li>
 	<li>cog_bl: Lesion center of gravity in baseline image as 3D pixel coordinates</li>
-	<li>img_id_bl: baseline image ID (either 0 or 1)</li>
+	<li>cog_backpropagated: Lesion center of gravity in baseline image as 3D pixel coordinates backpropagated from follow-up image using conventional registration (not available for all lesions; only when lesion is newly appearing in follow-up)</li>
+	<li>img_id_bl: baseline image ID (either 0, 1 or 2)</li>
 	<li>cog_propagated: Lesion center of gravity (as 3D pixel coordinates) propagated from baseline to follow-up scan using a conventional registration (not available for all lesions)</li>
 	<li>cog_fu: Lesion center of gravitiy in follow-up image as 3D pixel coordinates</li>
-	<li>img_id_fu: follow-up image ID (either 0 or 1)</li>
-	<li>lesion_type: Anatomical lesion location</li>
+	<li>img_id_fu: follow-up image ID (either 0, 1 or 2)</li>
+	<li>lesion_type: Anatomical lesion location ('Adrenals', 'CNS', 'Heart', 'Kidney', 'Liver', 'Lung', 'Lymph node', 'Others', 'Skeleton', 'Soft tissue / Skin', 'Spleen', 'unclear')</li>
+	<li>topology_class: Lesion topology between baseline to follow-up ('DISAPPEARING', 'MERGING', 'NEWLYAPPEARING', 'UNCHANGED')</li>
+	<li>merged_into: Lesion ID in the follow-up for 'MERGING' cases</li>
+	<li>volume_bl: Lesion volume [mm3] in baseline image</li>
+	<li>volume_fu: Lesion volume [mm3] in follow-up image</li>
+	<li>target_lesion: Boolean (True/False) if reader identified a target lesion</li>
+	<li>use_for_challenge: Boolean (True/False) if data was included in autoPET/CT IV challenge</li>
+	<li>linking_unclear: Reader states that lesion linking is unclear between baseline and follow-up</li>
 </ul>
 </p>
 
