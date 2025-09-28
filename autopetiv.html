@@ -287,7 +287,7 @@ A case (training or test) consists of one 3D CT volume, and one 3D binary mask o
 
 <h5>Training set</h5>
 <p style="text-align:justify">
-Annotated longitudinal CT of two imaging time points in >300 studes was acquired at the University Hospital Tübingen and is made publicly available on fdat in NIfTI format: TBD 
+Annotated longitudinal CT of two imaging time points in >300 studes was acquired at the University Hospital Tübingen and is made publicly available on fdat in NIfTI format: <a href="https://doi.org/10.57754/FDAT.qwsry-7t837"><img src="https://img.shields.io/badge/DOI-10.57754%2FFDAT.qwsry--7t837-blue"></a> 
 </p>
 
 <h5>Preliminary test set</h5>
@@ -307,18 +307,18 @@ The access to this preliminary set is restricted and only possible through the d
 The training and test database have the following structure:</p>
 <pre><code>
 |--- inputsTr
-	|--- c6f057b865.csv                          (lesion information for patient)     
-	|--- c6f057b865_BL_00.json                   (lesion center of gravity per lesion in baseline CT; Grand-Challenge JSON format)            
-	|--- c6f057b865_BL_img_BL_img_00.nii.gz      (CT baseline image)     
-	|--- c6f057b865_BL_mask_BL_img_00.nii.gz     (CT baseline lesion mask, integer mask)        
-	|--- c6f057b865_FU_00.json                   (lesion center of gravity per lesion in first follow-up CT; Grand-Challenge JSON format)     
-	|--- c6f057b865_FU_01.json                   (lesion center of gravity per lesion in second follow-up CT; Grand-Challenge JSON format; if available)     
-	|--- c6f057b865_FU_img_FU_img_00.nii.gz      (CT follow-up image, first body region)     
-	|--- c6f057b865_FU_img_FU_img_01.nii.gz      (CT follow-up image, second body region; if available)           
+	|--- c6f057b865.csv                   (lesion information for patient)     
+	|--- c6f057b865_BL_00.json            (lesion center of gravity per lesion in baseline CT; Grand-Challenge JSON format)            
+	|--- c6f057b865_BL_img_00.nii.gz      (CT baseline image)     
+	|--- c6f057b865_BL_mask_00.nii.gz     (CT baseline lesion mask, integer mask)        
+	|--- c6f057b865_FU_00.json            (lesion center of gravity per lesion in first follow-up CT; Grand-Challenge JSON format)     
+	|--- c6f057b865_FU_01.json            (lesion center of gravity per lesion in second follow-up CT; Grand-Challenge JSON format; if available)     
+	|--- c6f057b865_FU_img_00.nii.gz      (CT follow-up image, first body region)     
+	|--- c6f057b865_FU_img_01.nii.gz      (CT follow-up image, second body region; if available)           
 	|--- ...  
 |--- targetsTr            
-	|--- c6f057b865_FU_mask_FU_img_00.nii.gz     (CT follow-up lesion mask of first body region, integer mask)     
-	|--- c6f057b865_FU_mask_FU_img_01.nii.gz     (CT follow-up lesion mask of second body region, integer mask; if available)       
+	|--- c6f057b865_FU_mask_00.nii.gz     (CT follow-up lesion mask of first body region, integer mask)     
+	|--- c6f057b865_FU_mask_01.nii.gz     (CT follow-up lesion mask of second body region, integer mask; if available)       
 	|--- ...  
 </code></pre>
 
@@ -328,11 +328,19 @@ The CSV file contains the following columns:
 <ul>
 	<li>lesion_id: Continous ID count in the respective patient</li>
 	<li>cog_bl: Lesion center of gravity in baseline image as 3D pixel coordinates</li>
-	<li>img_id_bl: baseline image ID (either 0 or 1)</li>
+	<li>cog_backpropagated: Lesion center of gravity in baseline image as 3D pixel coordinates backpropagated from follow-up image using conventional registration (not available for all lesions; only when lesion is newly appearing in follow-up)</li>
+	<li>img_id_bl: baseline image ID (either 0, 1 or 2)</li>
 	<li>cog_propagated: Lesion center of gravity (as 3D pixel coordinates) propagated from baseline to follow-up scan using a conventional registration (not available for all lesions)</li>
 	<li>cog_fu: Lesion center of gravitiy in follow-up image as 3D pixel coordinates</li>
-	<li>img_id_fu: follow-up image ID (either 0 or 1)</li>
-	<li>lesion_type: Anatomical lesion location</li>
+	<li>img_id_fu: follow-up image ID (either 0, 1 or 2)</li>
+	<li>lesion_type: Anatomical lesion location ('Adrenals', 'CNS', 'Heart', 'Kidney', 'Liver', 'Lung', 'Lymph node', 'Others', 'Skeleton', 'Soft tissue / Skin', 'Spleen', 'unclear')</li>
+	<li>topology_class: Lesion topology between baseline to follow-up ('DISAPPEARING', 'MERGING', 'NEWLYAPPEARING', 'UNCHANGED')</li>
+	<li>merged_into: Lesion ID in the follow-up for 'MERGING' cases</li>
+	<li>volume_bl: Lesion volume [mm3] in baseline image</li>
+	<li>volume_fu: Lesion volume [mm3] in follow-up image</li>
+	<li>target_lesion: Boolean (True/False) if reader identified a target lesion</li>
+	<li>use_for_challenge: Boolean (True/False) if data was included in autoPET/CT IV challenge</li>
+	<li>linking_unclear: Reader states that lesion linking is unclear between baseline and follow-up</li>
 </ul>
 </p>
 <h5>⚙️ Data pre-processing</h5>
@@ -440,8 +448,402 @@ In case of test data that do not contain positives (no lesions), only metric 2 w
 						<section id="Leaderboard_sec">
 							<a class="anchor" id="Leaderboard"></a>
 							<h3>Leaderboard</h3>
+							<h4>Task 1: Single-staging whole-body PET/CT</h4>
+							<p style="text-align:justify">
+								<div class="table-wrapper">
+									<table>
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Team</th>
+												<th>Mean Position</th>
+												<th>Dice @last (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>False Negative Volume @last (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>False Positive Volume @last (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>AUC Dice (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>AUC False Negative Volume (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>AUC False Positive Volume (Position)</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>Model</th>
+												<th>Documentation</th>
+											</tr>
+											<tr>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall</th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall</th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall</th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall</th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall</th>
+												<th>LMU FDG</th>
+												<th>LMU PSMA</th>
+												<th>UKT FDG</th>
+												<th>UKT PSMA</th>
+												<th>Overall</th>
+												<th></th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>BIRTH</td>
+												<td>1.25</td>
+												<td>0.7010 (3)</td>
+												<td>0.7437 (1)</td>
+												<td>0.8242 (1)</td>
+												<td>0.6959 (2)</td>
+												<td>0.7412 (1)</td>
+												<td>1.1150 (2)</td>
+												<td>6.6527 (3)</td>
+												<td>0.4740 (2)</td>
+												<td>0.4245 (3)</td>
+												<td>2.1665 (2)</td>
+												<td>0.3896 (1)</td>
+												<td>0.8895 (2)</td>
+												<td>0.9871 (2)</td>
+												<td>2.8930 (2)</td>
+												<td>1.2898 (1)</td>
+												<td>6.9196 (3)</td>
+												<td>7.0838 (1)</td>
+												<td>8.1705 (1)</td>
+												<td>6.7937 (2)</td>
+												<td>7.2419 (1)</td>
+												<td>23.3049 (2)</td>
+												<td>96.3897 (2)</td>
+												<td>15.3223 (2)</td>
+												<td>6.6894 (2)</td>
+												<td>35.4266 (2)</td>
+												<td>4.3815 (2)</td>
+												<td>8.7053 (3)</td>
+												<td>10.5639 (2)</td>
+												<td>31.3134 (2)</td>
+												<td>13.7411 (1)</td>
+												<td><a target="_blank" rel="noopener noreferrer" href="https://github.com/huang-jw22/autoPET-4-submission/tree/master" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a target="_blank" rel="noopener noreferrer" href="docu/autopetiv/Task1/1_BIRTH_autoPET4_BIRTH_Submission.pdf" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>LesionLocator</td>
+												<td>2.25</td>
+												<td>0.7040 (2)</td>
+												<td>0.7178 (4)</td>
+												<td>0.8029 (4)</td>
+												<td>0.6697 (3)</td>
+												<td>0.7236 (3)</td>
+												<td>0.8397 (1)</td>
+												<td>5.3520 (1)</td>
+												<td>0.4407 (1)</td>
+												<td>0.3720 (1)</td>
+												<td>1.7511 (1)</td>
+												<td>0.6165 (3)</td>
+												<td>1.4394 (4)</td>
+												<td>3.8858 (6)</td>
+												<td>3.9582 (3)</td>
+												<td>2.4750 (2)</td>
+												<td>6.9646 (2)</td>
+												<td>6.8726 (2)</td>
+												<td>7.9455 (3)</td>
+												<td>6.4661 (3)</td>
+												<td>7.0622 (2)</td>
+												<td>14.5625 (1)</td>
+												<td>79.0628 (1)</td>
+												<td>5.5547 (1)</td>
+												<td>3.4653 (1)</td>
+												<td>25.6613 (1)</td>
+												<td>7.6836 (3)</td>
+												<td>15.5263 (4)</td>
+												<td>39.5529 (6)</td>
+												<td>44.1859 (3)</td>
+												<td>26.7372 (4)</td>
+												<td><a target="_blank" rel="noopener noreferrer" href="https://github.com/MIC-DKFZ/autoPET-interactive" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a target="_blank" rel="noopener noreferrer" href="docu/autopetiv/Task1/2_LesionLocator_autoPET4_Task1_LesionLocator.pdf" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>Zhack</td>
+												<td>3.25</td>
+												<td>0.6490 (4)</td>
+												<td>0.7298 (3)</td>
+												<td>0.8089 (2)</td>
+												<td>0.7356 (1)</td>
+												<td>0.7308 (2)</td>
+												<td>8.4465 (5)</td>
+												<td>6.6464 (2)</td>
+												<td>1.3300 (5)</td>
+												<td>0.4630 (4)</td>
+												<td>4.2215 (5)</td>
+												<td>6.7693 (4)</td>
+												<td>0.9080 (3)</td>
+												<td>0.7990 (1)</td>
+												<td>2.1481 (1)</td>
+												<td>2.6561 (4)</td>
+												<td>6.3488 (4)</td>
+												<td>6.7943 (3)</td>
+												<td>7.9480 (2)</td>
+												<td>6.8603 (1)</td>
+												<td>6.9878 (3)</td>
+												<td>115.5239 (6)</td>
+												<td>98.9267 (3)</td>
+												<td>31.6819 (3)</td>
+												<td>10.0667 (4)</td>
+												<td>64.0498 (4)</td>
+												<td>69.4458 (5)</td>
+												<td>7.9248 (2)</td>
+												<td>6.0634 (1)</td>
+												<td>16.1855 (1)</td>
+												<td>24.9049 (3)</td>
+												<td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Zhack47/autopetiv" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a target="_blank" rel="noopener noreferrer" href="docu/autopetiv/Task1/3_Zhack_AutoPETIV_GoodFormat.pdf" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>4</td>
+												<td>autopet__</td>
+												<td>3.375</td>
+												<td>0.7320 (1)</td>
+												<td>0.7349 (2)</td>
+												<td>0.8076 (3)</td>
+												<td>0.5895 (4)</td>
+												<td>0.7160 (4)</td>
+												<td>1.1491 (3)</td>
+												<td>6.6830 (4)</td>
+												<td>0.5029 (3)</td>
+												<td>0.9349 (5)</td>
+												<td>2.3175 (3)</td>
+												<td>0.4183 (2)</td>
+												<td>0.8549 (1)</td>
+												<td>2.2152 (3)</td>
+												<td>6.4935 (4)</td>
+												<td>2.4955 (3)</td>
+												<td>6.9967 (1)</td>
+												<td>6.7771 (4)</td>
+												<td>7.7660 (4)</td>
+												<td>5.3709 (4)</td>
+												<td>6.7277 (4)</td>
+												<td>39.5739 (3)</td>
+												<td>116.8194 (5)</td>
+												<td>66.4700 (6)</td>
+												<td>21.7453 (6)</td>
+												<td>61.1521 (3)</td>
+												<td>3.8145 (1)</td>
+												<td>6.0607 (1)</td>
+												<td>16.2253 (3)</td>
+												<td>64.0434 (4)</td>
+												<td>22.5360 (2)</td>
+												<td><a target="_blank" rel="noopener noreferrer" href="https://github.com/astlian9/AutoPETIV_solutions/" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a target="_blank" rel="noopener noreferrer" href="docu/autopetiv/Task1/4_autopet_Solutions_AutoPETiV.pdf" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>5</td>
+												<td>nnUNet (baseline)</td>
+												<td>5.25</td>
+												<td>0.6306 (5)</td>
+												<td>0.6925 (5)</td>
+												<td>0.7998 (5)</td>
+												<td>0.4168 (5)</td>
+												<td>0.6349 (5)</td>
+												<td>3.9837 (4)</td>
+												<td>6.6863 (5)</td>
+												<td>1.1791 (4)</td>
+												<td>0.4174 (2)</td>
+												<td>3.0666 (4)</td>
+												<td>8.7541 (5)</td>
+												<td>6.9473 (6)</td>
+												<td>3.8308 (5)</td>
+												<td>23.8253 (6)</td>
+												<td>10.8394 (6)</td>
+												<td>5.9005 (5)</td>
+												<td>6.3661 (5)</td>
+												<td>7.2066 (6)</td>
+												<td>3.8690 (6)</td>
+												<td>5.8355 (5)</td>
+												<td>163.9669 (7)</td>
+												<td>125.1135 (6)</td>
+												<td>231.9554 (7)</td>
+												<td>16.2937 (5)</td>
+												<td>134.3324 (7)</td>
+												<td>52.8512 (4)</td>
+												<td>35.1703 (5)</td>
+												<td>29.7207 (5)</td>
+												<td>223.2989 (6)</td>
+												<td>85.2603 (5)</td>
+												<td><a target="_blank" rel="noopener noreferrer" href="https://github.com/lab-midas/autoPETCTIV/tree/master/Task1/nnunet-baseline" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a target="_blank" rel="noopener noreferrer" href="#" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>6</td>
+												<td>Dolphins</td>
+												<td>5.75</td>
+												<td>0.5455 (6)</td>
+												<td>0.5394 (6)</td>
+												<td>0.7327 (6)</td>
+												<td>0.3897 (6)</td>
+												<td>0.5518 (6)</td>
+												<td>11.2429 (7)</td>
+												<td>9.9620 (6)</td>
+												<td>4.0891 (6)</td>
+												<td>0.9378 (6)</td>
+												<td>6.5580 (6)</td>
+												<td>12.0569 (6)</td>
+												<td>3.6937 (5)</td>
+												<td>2.2252 (4)</td>
+												<td>20.8322 (5)</td>
+												<td>9.7020 (5)</td>
+												<td>5.4550 (6)</td>
+												<td>5.3937 (6)</td>
+												<td>7.3272 (5)</td>
+												<td>3.8974 (5)</td>
+												<td>5.5183 (6)</td>
+												<td>112.4295 (5)</td>
+												<td>99.6204 (4)</td>
+												<td>40.8908 (4)</td>
+												<td>9.3782 (3)</td>
+												<td>65.5797 (5)</td>
+												<td>120.5687 (6)</td>
+												<td>36.9369 (6)</td>
+												<td>22.2520 (4)</td>
+												<td>208.3224 (5)</td>
+												<td>97.0200 (6)</td>
+												<td><a target="_blank" rel="noopener noreferrer" href="https://github.com/RespectKnowledge/AutoPet_2025_BxLSTM_UNET_Segmentation" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a target="_blank" rel="noopener noreferrer" href="docu/autopetiv/Task1/6_Dolphins_AUTOPET_2025_V2.pdf" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+											<tr>
+												<td>7</td>
+												<td>SW-FASTEDIT (baseline)</td>
+												<td>6.875</td>
+												<td>0.2507 (7)</td>
+												<td>0.1184 (7)</td>
+												<td>0.5324 (7)</td>
+												<td>0.0228 (7)</td>
+												<td>0.2311 (7)</td>
+												<td>8.7727 (6)</td>
+												<td>19.0827 (7)</td>
+												<td>5.1807 (7)</td>
+												<td>1.4831 (7)</td>
+												<td>8.6298 (7)</td>
+												<td>190.0509 (7)</td>
+												<td>576.1275 (7)</td>
+												<td>23.4361 (7)</td>
+												<td>959.5820 (7)</td>
+												<td>437.2991 (7)</td>
+												<td>2.4818 (7)</td>
+												<td>1.1707 (7)</td>
+												<td>5.2685 (7)</td>
+												<td>0.2192 (7)</td>
+												<td>2.2851 (7)</td>
+												<td>89.8120 (4)</td>
+												<td>196.6383 (7)</td>
+												<td>56.6229 (5)</td>
+												<td>22.8706 (7)</td>
+												<td>91.4860 (6)</td>
+												<td>1913.3372 (7)</td>
+												<td>5949.7750 (7)</td>
+												<td>230.1135 (7)</td>
+												<td>10077.7511 (7)</td>
+												<td>4542.7442 (7)</td>
+												<td><a target="_blank" rel="noopener noreferrer" href="https://github.com/lab-midas/autoPETCTIV/tree/master/Task1/interactive-baseline" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+												<td><a target="_blank" rel="noopener noreferrer" href="#" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</p>
 							
-	
+							<h4>Task 2: Longitudinal CT screening</h4>
+							<p style="text-align:justify">
+							<div class="table-wrapper">
+								<table>
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Team</th>
+											<th>Mean Position</th>
+											<th>Dice (Position)</th>
+											<th>False Negative Volume (Position)</th>
+											<th>False Positive Volume (Position)</th>
+											<th>Model</th>
+											<th>Documentation</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>LesionLocator</td>
+											<td>1</td>
+											<td>0.3822 (1)</td>
+											<td>1.0884 (1)</td>
+											<td>0.6315 (1)</td>
+											<td><a target="_blank" rel="noopener noreferrer" href="https://github.com/MIC-DKFZ/LongiSeg/tree/autoPET" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+											<td><a target="_blank" rel="noopener noreferrer" href="docu/autopetiv/Task2/1_LesionLocator_autoPET4_Task2.pdf" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>nRocholl</td>
+											<td>2.5</td>
+											<td>0.2967 (2)</td>
+											<td>2.5472 (3)</td>
+											<td>1.4817 (3)</td>
+											<td><a target="_blank" rel="noopener noreferrer" href="https://github.com/DIAGNijmegen/oncology-longinet-container" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+											<td><a target="_blank" rel="noopener noreferrer" href="docu/autopetiv/Task2/2_nRocholl_longinet.pdf" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>Baseline</td>
+											<td>2.5</td>
+											<td>0.2478 (3)</td>
+											<td>1.5957 (2)</td>
+											<td>0.9735 (2)</td>
+											<td><a target="_blank" rel="noopener noreferrer" href="https://github.com/lab-midas/autoPETCTIV/tree/master/Task2/mast-baseline" class="icon solid alt minor fa-code"><span class="label">Model</span></a></td>
+											<td><a target="_blank" rel="noopener noreferrer" href="#" class="icon solid alt minor fa-paperclip"><span class="label">Preprint</span></a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</p>
 						
 
 							<hr/>
@@ -515,6 +917,7 @@ Karlsruhe Institute of Technology
 Diagnostic Image Analysis Group
 <ul>
 <li><a href="https://www.diagnijmegen.nl/people/alessa-hering/">Alessa Hering</a></li>
+<li>Niels Rocholl</li>
 </ul>
 							</p>
 							<hr/>
