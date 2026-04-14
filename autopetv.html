@@ -1,0 +1,582 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>autoPET-V</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">autoPET</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<a href="#">Challenges</a>
+								<ul>
+									<li><a href="autopeti.html">autoPET-I</a></li>
+									<li><a href="autopetii.html">autoPET-II</a></li>
+									<li><a href="autopetiii.html">autoPET-III</a></li>
+									<li><a href="autopetiv.html">autoPET/CT-IV</a></li>
+									<li><a href="autopetv.html">autoPET-V</a></li>
+								</ul>
+							</li>
+							<li>
+							<a href="#">Databases</a>
+								<ul>
+									<li><a href="fdgpetct.html">FDG PET/CT</a></li>
+									<li><a href="psmapetct.html">PSMA PET/CT</a></li>
+									<li><a href="longitudinalct.html">Longitudinal CT</a></li>
+								</ul>
+							</li>
+							<li><a href="organizers.html">Info</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2>autoPET-V</h2>
+							<p>The human-AI frontier</p>
+						</header>
+
+						<!-- Text -->
+						<section id="labels" class="wrapper2 style1 special">
+							<div class="container">
+								<div class="box alt">
+									<div class="row gtr-uniform">
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<span class="icon solid alt major fa-list" onclick="window.location.href='#Task';"></span>
+											<a href="#Task"><h3>Task</h3></a>
+										</section>
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<span class="icon solid alt major fa-database" onclick="window.location.href='#Database';"></span>
+											<a href="#Database"><h3>Database</h3></a>
+										</section>
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<a href="#Evaluation">
+											<span class="icon solid alt major fa-dna" onclick="window.location.href='#Evaluation';"></span>
+											<h3>Evaluation</h3></a>
+										</section>
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<a href="#Codes">
+											<span class="icon solid alt major fa-file" onclick="window.location.href='#Codes';"></span>
+											<h3>Codes and Models</h3></a>
+										</section>
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<a href="#Leaderboard">
+											<span class="icon solid alt major fa-trophy" onclick="window.location.href='#Leaderboard';"></span>
+											<h3>Leaderboard</h3></a>
+										</section>
+										<section class="col-4 col-6-medium col-12-xsmall">
+											<a href="#Organizers">
+											<span class="icon solid alt major fa-people-arrows" onclick="window.location.href='#Organizers';"></span>
+											<h3>Organizers</h3></a>
+										</section>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section id="Introduction">
+							<h3>Introduction</h3>
+							<p style="text-align:justify">
+								We invite you to participate in the fifth edition of the <a href="http://www.autopet.org/">autoPET Challenge</a>, focusing on interactive, clinician-in-the-loop lesion segmentation in whole-body PET/CT.
+							</p>
+							<p style="text-align:justify">
+								Positron Emission Tomography combined with Computed Tomography (PET/CT) plays a central role in oncologic imaging, supporting diagnosis, staging, therapy response assessment, and disease monitoring. In current clinical practice, radiologists assess tumor burden by visually inspecting PET/CT scans and identifying changes in lesion size and distribution using standardized criteria. Despite the substantial effort required for this manual process, only a limited subset of lesions is typically evaluated using simplified one-dimensional measurements. As a result, a large fraction of the rich quantitative and spatial information contained in PET imaging remains underutilized. In addition, manual assessment is subject to inter-observer variability and may not fully capture complex disease patterns.
+							</p>
+							<p style="text-align:justify">
+								Automated lesion detection and segmentation have the potential to enable more comprehensive and reproducible analysis of tumor burden. While recent advances in deep learning have led to significant progress in automated whole-body PET/CT segmentation, important challenges remain. These include limited robustness to domain shifts across scanners, tracers, and centers, difficulties in distinguishing physiological uptake from pathological lesions, and reduced performance in complex or low-contrast cases. Most importantly, fully automated solutions often fail to align with clinical expectations, where expert interpretation and correction remain essential.
+							</p>
+							<p style="text-align:justify">
+								In clinical reality, lesion segmentation is therefore not a purely automatic task, but an interactive and iterative process in which clinicians refine and correct algorithmic predictions. autoPET V embraces this paradigm shift by introducing a benchmark for interactive lesion segmentation in whole-body PET/CT. Participants are asked to develop algorithms that generate an initial segmentation and iteratively improve it in response to sparse corrective input provided during inference in the form of scribbles targeting false-positive and false-negative regions.
+							</p>
+							<p style="text-align:justify">
+								A central feature of autoPET V is the evaluation under two complementary interaction regimes. First, a standardized simulated-interaction setting enables scalable and fully reproducible benchmarking by generating corrective scribbles in a controlled manner. Second, a clinician-driven interaction setting incorporates real expert annotations, capturing realistic human–AI correction behavior in clinical workflows. All submitted methods are evaluated consistently across both regimes in a newly harmonized multi-center test cohort, allowing the challenge to assess both algorithmic adaptability and clinical relevance.
+							</p>
+							<p style="text-align:justify">
+								The autoPET V challenge is hosted at <a href="https://conferences.miccai.org/2026/en/default.asp" target="_blank">MICCAI 2026</a> in collaboration with the <a href="https://www.myesr.org/">European Society of Radiology (ESR)</a> under "AI-based assessment of PET imaging for oncology" and supported by the <a href="https://www.eshi-society.org/">European Society for hybrid, molecular and translational imaging (ESHI)</a>. The challenge is part of the <a href="http://www.autopet.org/">autoPET series</a> and the successor of <a href="autopeti.html">autoPET</a>, <a href="autopetii.html">autoPET II</a>, <a href="autopetiii.html">autoPET III</a>, and <a href="autopetiv.html">autoPET/CT IV</a>.
+							</p>
+							<hr />
+						</section>
+
+						<section id="Grand_challenge_sec">
+							<h3>Grand Challenge</h3>
+							<p style="text-align:justify">
+								More information about the challenge can be found on <a href="https://autopet-v.grand-challenge.org/">Grand Challenge</a>.
+							</p>
+							<hr/>
+						</section>
+
+						<section id="Task_sec">
+							<a class="anchor" id="Task"></a>
+							<h3>Task</h3>
+							<p style="text-align:justify">
+								autoPET V defines a single unified task: <b>interactive lesion segmentation in whole-body PET/CT</b>. Participants develop algorithms that:
+								<ol>
+									<li>Generate an initial segmentation of tracer-avid tumor lesions</li>
+									<li>Iteratively refine this segmentation based on sparse corrective input during inference</li>
+								</ol>
+								Unlike previous editions, this challenge focuses on adaptive human–AI interaction, rather than static, fully automated segmentation. All publicly available data and (pre-trained) models, including foundation models, are allowed. Participants may develop:
+								<ul>
+									<li>novel model architectures</li>
+									<li>interaction-aware or prompt-based methods</li>
+									<li>data-centric pipelines (pre-/post-processing)</li>
+								</ul>
+							</p>
+
+							<h4>🎯 Goal</h4>
+							<p style="text-align:justify">
+								The goal is to develop algorithms that are:
+								<ul>
+									<li><b>Accurate</b> → high-quality lesion segmentation</li>
+									<li><b>Robust</b> → generalize across tracers, centers, and acquisition conditions</li>
+									<li><b>Adaptive</b> → efficiently incorporate human corrective input</li>
+								</ul>
+								The challenge explicitly evaluates how quickly and reliably models improve when given minimal guidance, reflecting real clinical workflows.
+							</p>
+
+							<h4>🔄 Interactive Segmentation</h4>
+							<p style="text-align:justify">
+								The task models a realistic clinical workflow in which automated segmentations are iteratively refined through human input. Each method is evaluated in an interactive loop:
+								<ol>
+									<li>The algorithm produces an initial lesion segmentation</li>
+									<li>Corrective input is provided in the form of sparse scribbles targeting:
+										<ul>
+											<li>false-positive regions (over-segmentation)</li>
+											<li>false-negative regions (missed lesions)</li>
+										</ul>
+									</li>
+									<li>The algorithm updates its prediction based on all previously provided input</li>
+								</ol>
+								This interaction is performed at inference time, without retraining or parameter updates between steps. To balance reproducibility and clinical realism, all methods are evaluated under two complementary interaction regimes:
+							</p>
+
+							<h5>Category 1: Simulated Interaction</h5>
+							<ul>
+								<li>Scribbles are generated automatically based on prediction errors</li>
+								<li>Fully reproducible and standardized across submissions</li>
+								<li>Fixed number of interaction steps per case</li>
+							</ul>
+
+							<h5>Category 2: Clinician-Driven Interaction</h5>
+							<ul>
+								<li>Scribbles are provided by expert readers</li>
+								<li>Reflect realistic clinical correction behavior</li>
+								<li>Variable number of interactions per case</li>
+							</ul>
+							<p style="text-align:justify">
+								Each submission is evaluated under both regimes and automatically participates in both award categories.
+							</p>
+
+							<h4>📤 Input / Output</h4>
+							<p style="text-align:justify">
+								<b>Input per interaction step:</b>
+								<ul>
+									<li>CT image (MHA file)</li>
+									<li>PET image (MHA file)</li>
+									<li>Corrective scribbles in foreground and background (JSON file)</li>
+								</ul>
+								<b>Output:</b>
+								<ul>
+									<li>Lesion segmentation mask (MHA file)</li>
+								</ul>
+							</p>
+							<hr/>
+						</section>
+
+						<section id="Database_sec">
+							<a class="anchor" id="Database"></a>
+							<h3>Database</h3>
+
+							<h4>Single-staging whole-body FDG/PSMA PET/CT</h4>
+
+							<h5>ℹ️ Information</h5>
+							<p style="text-align:justify">
+								The FDG cohort comprises 1014 studies of 501 patients diagnosed with histologically proven malignant melanoma, lymphoma, or lung cancer, along with 513 negative control patients. The PSMA cohort includes pre- and/or post-therapeutic PET/CT images of male individuals with prostate carcinoma, encompassing images with (537) and without PSMA-avid tumor lesions (60). Notably, the training datasets exhibit distinct age distributions: the FDG UKT cohort spans 570 male patients (mean age: 60; std: 16) and 444 female patients (mean age: 58; std: 16), whereas the PSMA MUC cohort tends to be older, with 378 male patients (mean age: 71; std: 8). Additionally, there are variations in imaging conditions between the FDG UKT and PSMA MUC cohorts, particularly regarding the types and number of PET/CT scanners utilized for acquisition. The PSMA MUC dataset was acquired using three different scanner types (Siemens Biograph 64-4R TruePoint, Siemens Biograph mCT Flow 20, and GE Discovery 690), whereas the FDG UKT dataset was acquired using a single scanner (Siemens Biograph mCT).
+							</p>
+
+							<h5>📥 Download</h5>
+							<p style="text-align:justify">
+								We provide the merged data as NIfTI in nnUNet format which can be downloaded from <a href="https://fdat.uni-tuebingen.de/">fdat</a> (120GB): <a href="https://doi.org/10.57754/FDAT.6gjsg-zcg93"><img src="https://img.shields.io/badge/DOI-10.57754%2FFDAT.6gjsg--zcg93-blue"></a>
+								<br/>
+								The download will contain the resampled FDG and PSMA data as NiFTI files. It also contains the files obtained by running the nnUNet fingerprint extractor and a splits file which we use to design/train our baselines.
+							</p>
+
+							<h5>🎥 PET/CT acquisition protocol</h5>
+							<p style="text-align:justify">
+								<b>FDG dataset:</b> Patients fasted at least 6 h prior to the injection of approximately 350 MBq 18F-FDG. Whole-body PET/CT images were acquired using a Biograph mCT PET/CT scanner (Siemens, Healthcare GmbH, Erlangen, Germany) and were initiated approximately 60 min after intravenous tracer administration. Diagnostic CT scans of the neck, thorax, abdomen, and pelvis (200 reference mAs; 120 kV) were acquired 90 sec after intravenous injection of a contrast agent (90-120 ml Ultravist 370, Bayer AG) or without contrast agent (in case of existing contraindications). PET Images were reconstructed iteratively (three iterations, 21 subsets) with Gaussian post-reconstruction smoothing (2 mm full width at half-maximum). Slice thickness on contrast-enhanced CT was 2 or 3 mm.
+								<br/><br/>
+								<b>PSMA dataset:</b> Examinations were acquired on different PET/CT scanners (Siemens Biograph 64-4R TruePoint, Siemens Biograph mCT Flow 20, and GE Discovery 690). The imaging protocol mainly consisted of a diagnostic CT scan from the skull base to the mid-thigh using the following scan parameters: reference tube current exposure time product of 143 mAs (mean); tube voltage of 100kV or 120 kV for most cases, slice thickness of 3 mm for Biograph 64 and Biograph mCT, and 2.5 mm for GE Discovery 690 (except for 3 cases with 5 mm). Intravenous contrast enhancement was used in most studies (571), except for patients with contraindications (26). The whole-body PSMA-PET scan was acquired on average around 74 minutes after intravenous injection of 246 MBq 18F-PSMA (mean, 369 studies) or 214 MBq 68Ga-PSMA (mean, 228 studies), respectively. The PET data was reconstructed with attenuation correction derived from corresponding CT data. For GE Discovery 690 the reconstruction process employed a VPFX algorithm with voxel size 2.73 mm × 2.73 mm × 3.27 mm, for Siemens Biograph mCT Flow 20 a PSF+TOF algorithm (2 iterations, 21 subsets) with voxel size 4.07 mm × 4.07 mm × 3.00 mm, and for Siemens Biograph 64-4R TruePoint a PSF algorithm (3 iterations, 21 subsets) with voxel size 4.07 mm × 4.07 mm × 5.00 mm.
+							</p>
+
+							<h5>⌛ Training cohort</h5>
+							<p style="text-align:justify">
+								Training cases: 1,014 FDG studies (900 patients) and 597 PSMA studies (378 patients)<br/>
+								<br/>
+								FDG training data consists of 1,014 studies acquired at the University Hospital Tübingen and is made publicly available on <a href="https://www.cancerimagingarchive.net/">TCIA</a> in DICOM format: <a href="https://doi.org/10.7937/gkr0-xv29"><img src="https://img.shields.io/badge/DOI-10.7937%2Fgkr0--xv29-blue"></a> <br/>
+								and on <a href="https://fdat.uni-tuebingen.de/">fdat</a> in NIfTI format: <a href="https://doi.org/10.57754/FDAT.wf9fy-txq84"><img src="https://img.shields.io/badge/DOI-10.57754%2FFDAT.wf9fy--txq84-blue"></a>
+								<br/><br/>
+								PSMA training data consists of 597 studies acquired at the LMU University Hospital Munich and will be made publicly available on <a href="https://www.cancerimagingarchive.net/">TCIA</a> in DICOM format. The combined PSMA and FDG data is available on <a href="https://fdat.uni-tuebingen.de/">fdat</a> in NIfTI format: <a href="https://doi.org/10.57754/FDAT.6gjsg-zcg93"><img src="https://img.shields.io/badge/DOI-10.57754%2FFDAT.6gjsg--zcg93-blue"></a>
+								<br/><br/>
+								A case consists of one 3D whole-body FDG-PET or PSMA-PET volume, one corresponding 3D whole-body CT volume, one 3D binary mask of manually segmented tumor lesions on PET of the size of the PET volume, and pre-simulated corrective scribbles. CT and PET were acquired simultaneously on a single PET/CT scanner in one session; thus PET and CT are anatomically aligned up to minor shifts due to physiological motion. The <a href="https://github.com/lab-midas/autoPETV/tree/master/clicks">pre-simulated clicks for training</a> are provided in <a href="https://github.com/lab-midas/autoPETV">Github</a> together with a script for further (parametrized) click simulations.
+								<br/><br/>
+								If you use this data, please cite:
+								<blockquote>Gatidis S, Kuestner T. A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions) [Dataset]. The Cancer Imaging Archive, 2022. DOI: 10.7937/gkr0-xv29<br/><br/>
+									Jeblick, K., et al. A whole-body PSMA-PET/CT dataset with manually annotated tumor lesions (PSMA-PET-CT-Lesions) (Version 1) [Dataset]. The Cancer Imaging Archive, 2024. DOI: 10.7937/r7ep-3x37
+								</blockquote>
+							</p>
+
+							<h5>🗃️ Data structure</h5>
+<pre><code>
+|--- imagesTr
+     |--- tracer_patient1_study1_0000.nii.gz  (CT image resampled to PET)
+     |--- tracer_patient1_study1_0001.nii.gz  (PET image in SUV)
+     |--- ...
+|--- labelsTr
+     |--- tracer_patient1_study1.nii.gz       (manual annotations of tumor lesions)
+
+|--- dataset.json                             (nnUNet dataset description)
+|--- dataset_fingerprint.json                 (nnUNet dataset fingerprint)
+
+|--- splits_final.json                        (reference 5fold split)
+
+|--- psma_metadata.csv                        (metadata csv for psma)
+
+|--- fdg_metadata.csv                         (original metadata csv for fdg)
+</code></pre>
+
+							<h5>⚙️ Data pre-processing</h5>
+							<p style="text-align:justify">
+								Please note that the submission and evaluation interfaces provided by Grand Challenge are working with <code>.mha</code> data. Hence, you will need to read the test images in your submission from an <code>.mha</code> file. We already provide interfaces and code for this in the <a href="https://github.com/lab-midas/autoPETV">baseline algorithms</a>.
+							</p>
+
+							<h5>✒ Annotation</h5>
+							<p style="text-align:justify">
+								FDG PET/CT training and test data from UKT was annotated by a Radiologist with 10 years of experience in Hybrid Imaging and experience in machine learning research. FDG PET/CT test data from LMU was annotated by a radiologist with 8 years of experience in hybrid imaging. PSMA PET/CT training and test data from LMU as well as PSMA PET/CT test data from UKT was annotated by a single reader and reviewed by a radiologist with 5 years of experience in hybrid imaging.
+								<br/><br/>
+								The following annotation protocol was defined:<br/>
+								Step 1: Identification of tracer-avid tumor lesions by visual assessment of PET and CT information together with the clinical examination reports.<br/>
+								Step 2: Manual free-hand segmentation of identified lesions in axial slices.
+							</p>
+
+							<hr/>
+
+							<h4>DeepPSMA</h4>
+
+							<h5>ℹ️ Information</h5>
+							<p style="text-align:justify">
+								autoPET V aligns with the <a href="https://deep-psma.grand-challenge.org/">DeepPSMA challenge</a>, which provides a multi-center whole-body PSMA PET/CT (a mix of 68Ga-PSMA-617 and 18F-DCFPyL) cohort in 100 patients acquired under clinically routine conditions for prostate cancer imaging. DeepPSMA data encompass scans from different PET/CT systems and PSMA tracers, with expert-annotated prostate cancer lesions and a wide range of disease burden and physiological uptake patterns. Imaging protocols and reconstruction follow standard clinical practice, enabling complementary coverage of PSMA-specific uptake characteristics and scanner variability.
+							</p>
+
+							<h5>📥 Download</h5>
+							<p style="text-align:justify">
+								DeepPSMA is available in NIfTI format: <a href="https://doi.org/10.5281/zenodo.15281784"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.15281784-blue"></a>
+							</p>
+
+							<h5>🎥 PET/CT acquisition protocol</h5>
+							<p style="text-align:justify">
+								Image data are acquired on standard diagnostic PET/CT systems, predominantly including GE Discovery 710 &amp; 690 PET/CTs, Siemens Biograph PET/CT, and Siemens Vision 600 PET/CT. Whole-body (predominantly vertex to thighs) PET images with low-dose CT component for attenuation correction and anatomical localization. PET images reconstructed with standard corrections EANM EARL-compliant resolution recovery settings.
+							</p>
+
+							<h5>⌛ Training cohort</h5>
+							<p style="text-align:justify">
+								Training cases: 100 studies (100 patients)
+							</p>
+
+							<h5>🗃️ Data structure</h5>
+							<p style="text-align:justify">
+								For each case, a subdirectory for the two tracers with relevant image data and annotations are given (CT, PET in units of SUV, and Total Tumor Burden). The threshold used for contouring each PET series is given in the threshold.json file.
+							</p>
+<pre><code>
+|--- train_0001
+     |--- PSMA
+          |--- CT.nii.gz
+          |--- PET.nii.gz
+          |--- TTB.nii.gz
+          |--- threshold.json
+          |--- totseg_24.nii.gz
+          |--- rigid.tfm          (FDG to PSMA)
+     |--- FDG
+          |--- CT.nii.gz
+          |--- PET.nii.gz
+          |--- TTB.nii.gz
+          |--- threshold.json
+          |--- totseg_24.nii.gz
+          |--- rigid.tfm          (PSMA to FDG)
+|--- train_0002
+|--- train_0003
+...
+</code></pre>
+
+							<h5>⚙️ Data pre-processing</h5>
+							<p style="text-align:justify">
+								Please refer to the <a href="https://github.com/Peter-MacCallum-Cancer-Centre/DEEP-PSMA-Algorithm">DeepPSMA baseline algorithm</a> for further information on data pre-processing and usage.
+							</p>
+
+							<h5>✒ Annotation</h5>
+							<p style="text-align:justify">
+								Images are contoured based on a fixed SUV threshold per scan. All PSMA PET/CTs utilise SUV&ge;3 while FDG PET/CT images use a liver-based threshold (generally Liver Mean + 2&times;SD). The designated threshold for each study is provided with the image data. Subsequently, determination of malignant versus physiological areas of tracer avidity has been manually annotated by an expert nuclear medicine physician with 5 or more years of specialisation.
+							</p>
+
+							<hr/>
+
+							<h4>Longitudinal CT screening (auxiliary data)</h4>
+
+							<h5>ℹ️ Information</h5>
+							<p style="text-align:justify">
+								In the context of this challenge, the longitudinal CT dataset is provided as <b>optional auxiliary data</b>. It is not part of the primary evaluation task and is not explicitly assessed. Participants may use this data at their discretion (e.g. for pretraining, feature learning, or data-centric approaches), but its use is neither required nor directly evaluated for the PET/CT segmentation task.
+								<br/><br/>
+								The cohort consists of melanoma patients undergoing longitudinal CT screening examinations in an oncologic context for diagnosis, staging, or therapy response assessment. The CT cohort comprises whole-body imaging in 300 patients (female: 170, mean age: 64y, std age: 15y) of two imaging timepoints: baseline staging, and follow-up scans after therapy treatment. Training data was acquired at a single site (UKT).
+							</p>
+
+							<h5>📥 Download</h5>
+							<p style="text-align:justify">
+								We provide the data as NIfTI format which can be downloaded from <a href="https://fdat.uni-tuebingen.de/">fdat</a> (54GB): <a href="https://doi.org/10.57754/FDAT.qwsry-7t837"><img src="https://img.shields.io/badge/DOI-10.57754%2FFDAT.qwsry--7t837-blue"></a>
+							</p>
+
+							<h5>🎥 CT acquisition protocol</h5>
+							<p style="text-align:justify">
+								Patients were scanned with the inhouse whole-body staging protocol for a scan field from skull base to the middle of the femur with patients laid in a supine position, arms raised above the head. Scanning was performed during the portal-venous phase after administration of body-weight adapted contrast medium through the cubital vein. Attenuation-based tube current modulation (CARE Dose, reference mAs 240) and tube voltage (120 kV) were applied. The following scan parameters were used:<br/>
+								SOMATOM Force: collimation 128 × 0.6 mm, rotation time 0.5 s, pitch 0.6<br/>
+								Sensation64: collimation 64 × 0.6 mm, rotation time 0.5 s, pitch 0.6<br/>
+								SOMATOM Definition Flash: collimation 128 × 0.6 mm, rotation time 0.5 s, pitch 1.0<br/>
+								SOMATOM Definition AS: collimation 64 × 0.6 mm, rotation time 0.5 s, pitch 0.6<br/>
+								Biograph128: collimation 128 × 0.6 mm, rotation time 0.5 s, pitch 0.8<br/>
+								Slice thickness as well as increment were set to 3 mm. A medium smooth kernel was used for image reconstruction.
+							</p>
+
+							<h5>⌛ Training cohort</h5>
+							<p style="text-align:justify">
+								Training cases: 300 studies (300 patients)<br/>
+								<br/>
+								Annotated longitudinal CT of two imaging time points in 300 studies was acquired at the University Hospital Tübingen and is made publicly available on <a href="https://fdat.uni-tuebingen.de/">fdat</a> in NIfTI format: <a href="https://doi.org/10.57754/FDAT.qwsry-7t837"><img src="https://img.shields.io/badge/DOI-10.57754%2FFDAT.qwsry--7t837-blue"></a>
+							</p>
+
+							<h5>✒ Annotation</h5>
+							<p style="text-align:justify">
+								All data were manually annotated by two experienced radiologists. To this end, tumor lesions were manually segmented on the CT image data using dedicated software.
+								<br/><br/>
+								The following annotation protocol was defined:<br/>
+								Step 1: Identification of tumor lesions by visual assessment of CT information together with the clinical examination reports.<br/>
+								Step 2: Manual free-hand segmentation of identified lesions in axial slices.<br/>
+								Step 3: Baseline and follow-up segmentations are viewed side-by-side to mark the matching lesions.
+							</p>
+
+							<hr/>
+
+							<h4>🚧 Preliminary test set</h4>
+							<p style="text-align:justify">
+								For the self-evaluation of participating pipelines, we provide access to a preliminary test set. The preliminary test set <b>does not reflect the final test set</b>. Algorithm optimization on the preliminary test set will not yield satisfactory results on the final test set!
+								<br/>
+								The access to this preliminary set is restricted and only possible through the docker containers submitted to the challenge, and only available for a limited time during the competition. The purpose is that participants can check the implementation and sanity of their approaches.
+							</p>
+
+							<h4>📊 Final test set</h4>
+							<p style="text-align:justify">
+								The final test set consists of 200 whole-body PET/CT studies collected from four international centers: University Hospital Tübingen, Ludwig-Maximilians-University Munich, Peter MacCallum Cancer Centre, and University Hospital Essen. The cohort is designed to evaluate generalization, robustness, and interaction behavior under clinically realistic conditions.
+								<ul>
+									<li>Total: 200 studies (50 cases per center)</li>
+									<li>Cases include a broad spectrum of disease presentations, including lesion-present cases with varying tumor burden, lesion-absent or low-uptake studies, and clinically challenging cases with ambiguous or physiological uptake</li>
+								</ul>
+								All submitted algorithms are evaluated in all 200 test cases under the simulated interaction regime (Category 1). A dedicated subset of 20 cases (5 per center) is additionally evaluated under the clinician-driven interaction regime (Category 2), with annotations provided by two independent physicians per center.
+								<br/><br/>
+								To ensure fair evaluation, detailed information on tracer distribution, acquisition parameters, and case composition will not be disclosed prior to the challenge deadline.
+							</p>
+							<hr/>
+						</section>
+
+						<section id="Evaluation_sec">
+							<a class="anchor" id="Evaluation"></a>
+							<h3>Evaluation</h3>
+							<p style="text-align:justify">
+								Evaluation will be performed on held-out test cases. The challenge focuses on assessing both segmentation accuracy and interaction efficiency in an interactive human–AI setting. Performance is evaluated using two complementary metrics:
+								<ul>
+									<li><b>Dice Score (DSC):</b> Measures voxel-level overlap between predicted and ground-truth lesion segmentation.</li>
+									<li><b>Detection–Matching Metric (DMM):</b> Measures instance-level detection performance by assessing whether predicted lesions match ground-truth lesions. This metric explicitly evaluates the ability to correctly identify individual lesions, independent of voxel overlap.</li>
+								</ul>
+								These two metrics reflect the dual objective of PET/CT lesion analysis: accurately delineating tumor burden (Dice) and correctly detecting and separating individual lesions (DMM).
+							</p>
+
+							<img src="images/metricautopet.png" width="50%"><br/>
+							<i>Figure: Example for the evaluation. The Dice score is calculated to measure the correct overlap between predicted lesion segmentation (blue) and ground truth (red). Additionally special emphasis is put on false negatives by measuring their volume (i.e. entirely missed lesions) and on false positives by measuring their volume (i.e. large false positive volumes like brain or bladder will result in a low score).</i>
+
+							<h4>🔄 Interactive Evaluation</h4>
+							<p style="text-align:justify">
+								Metrics are evaluated iteratively over the interaction process, where models receive corrective scribbles and update their predictions step-by-step. Performance is tracked across interaction steps and summarized using area-under-the-curve (AUC) formulations:
+								<ul>
+									<li><b>AUC-Dice</b> → measures how efficiently segmentation quality improves</li>
+									<li><b>AUC-DMM</b> → measures how efficiently lesion detection improves</li>
+								</ul>
+								AUC is computed using the trapezoidal rule over interaction steps.
+							</p>
+
+							<h4>📊 Final Metrics</h4>
+							<p style="text-align:justify">
+								For each submission, the following primary metrics are reported:
+								<ol>
+									<li>AUC-Dice (higher is better)</li>
+									<li>AUC-DMM (higher is better)</li>
+								</ol>
+								Additionally, the following descriptive metrics are reported for analysis:
+								<ul>
+									<li>Final Foreground Dice score of segmented lesions</li>
+									<li>Final DMM score of segmented lesions</li>
+									<li>False positive volume (FPV): Volume of false positive connected components that do not overlap with positives</li>
+									<li>False negative volume (FNV): Volume of positive connected components in the ground truth that do not overlap with the estimated segmentation mask</li>
+								</ul>
+								A python script computing these evaluation metrics is provided under <a href="https://github.com/lab-midas/autoPETV">https://github.com/lab-midas/autoPETV</a>.
+							</p>
+
+							<h4>⚙️ Interaction Regimes</h4>
+							<p style="text-align:justify">
+								Each submission is evaluated under two complementary regimes:
+							</p>
+							<h5>Category 1: Simulated Interaction</h5>
+							<ul>
+								<li>Standardized, reproducible scribbles</li>
+								<li>Fixed number of interaction steps</li>
+								<li>Enables consistent benchmarking across all methods</li>
+								<li>Applied to all 200 final test cases</li>
+							</ul>
+							<h5>Category 2: Clinician-Driven Interaction</h5>
+							<ul>
+								<li>Real expert-provided scribbles</li>
+								<li>Variable number of interactions per case</li>
+								<li>Reflects realistic clinical correction workflows</li>
+								<li>Applied to 20 selected test cases (5 per center), annotated by two independent physicians each</li>
+							</ul>
+
+							<h4>Ranking</h4>
+							<p style="text-align:justify">
+								All submissions are evaluated under both interaction regimes and are automatically eligible for both award categories. The ranking is based on <b>AUC-Dice (50%)</b> and <b>AUC-DMM (50%)</b>. For each metric, scores are averaged across all test cases. Then rankings are computed per metric and the final ranking is obtained by combining both metric rankings with equal weighting.
+							</p>
+
+							<hr/>
+						</section>
+
+						<section id="Codes_sec">
+							<a class="anchor" id="Codes"></a>
+							<h3>Codes and Models</h3>
+							<h4>Codes</h4>
+							<p style="text-align:justify">
+								<a href="https://github.com/lab-midas/autoPETV" class="icon brands alt fa-github"> https://github.com/lab-midas/autoPETV</a>
+							</p>
+							<h4>Models</h4>
+							<p style="text-align:justify">
+								Models and documentation of the submitted challenge algorithms can be found in the <a href="#Leaderboard">Leaderboard</a>.
+							</p>
+							<hr/>
+						</section>
+
+						<section id="Leaderboard_sec">
+							<a class="anchor" id="Leaderboard"></a>
+							<h3>Leaderboard</h3>
+							<p style="text-align:justify">
+								The challenge is currently running. The leaderboard will be updated after the challenge deadline.
+								<br/>							
+							</p>
+							<hr/>
+						</section>
+
+						<section id="Organizers_sec">
+							<a class="anchor" id="Organizers"></a>
+							<h3>Organizers</h3>
+							<p style="text-align:justify">
+
+							<div class="col-4 col-6-xsmall"><span class="image fit"><img src="images/ukt.png" alt="" style="width: 30%; height: auto;"/></span></div>
+							University Hospital Tübingen<br/>
+							<a href="http://www.midaslab.org/" target="_blank">Medical Image and Data Analysis (MIDAS.lab)</a>
+							<ul>
+								<li><a href="https://is.mpg.de/person/sgatidis" target="_blank">Sergios Gatidis</a></li>
+								<li><a href="https://www.medizin.uni-tuebingen.de/de/das-klinikum/mitarbeiter/profil/252" target="_blank">Thomas Küstner</a></li>
+								<li><a href="https://www.medizin.uni-tuebingen.de/de/das-klinikum/mitarbeiter/profil/6379" target="_blank">Pauline Ornela Megne Choudja</a></li>
+								<li><a href="https://www.medizin.uni-tuebingen.de/de/das-klinikum/mitarbeiter/profil/632" target="_blank">Felix Peisen</a></li>
+							</ul>
+							<br/>
+
+							<div class="col-4 col-6-xsmall"><span class="image fit"><img src="images/lmu.png" alt="" style="width: 20%; height: auto;"/></span></div>
+							University Hospital of the LMU in Munich<br/>
+							<a href="https://www.lmu-klinikum.de/radiologie/forschung/clinical-data-science/0e8a3ac188dad3f9" target="_blank">Clinical Data Science</a>
+							<ul>
+								<li><a href="https://www.lmu-klinikum.de/radiologie/klinik-kompakt/arztlicher-dienst/55c11d6dafa8dc71" target="_blank">Clemens Cyran</a></li>
+								<li><a href="https://www.lmu-klinikum.de/radiologie/forschung/clinical-data-science/0e8a3ac188dad3f9" target="_blank">Michael Ingrisch</a></li>
+								<li>Lalith Kumar Shiyam Sundar</li>
+								<li>Jakob Dexl</li>
+								<li>Katharina Jeblick</li>
+								<li>Balthasar Schachtner</li>
+								<li>Anna Theresa Stüber</li>
+								<li>Matthias Fabritius</li>
+							</ul>
+							<br/>
+
+							<div class="row gtr-50 gtr-uniform">
+								<div class="col-4 col-6-xsmall"><span class="image fit"><img src="images/kit.svg" alt="" style="width: 40%; height: auto;"/></span></div>
+								<div class="col-4 col-6-xsmall"><span class="image fit"><img src="images/cvhci.png" alt="" style="width: 50%; height: auto;"/></span></div>
+							</div><br/>
+							Karlsruhe Institute of Technology
+							<ul>
+								<li><a href="https://cvhci.iar.kit.edu/people_2240.php">Zdravko Marinov</a></li>
+							</ul>
+							<br/>
+
+                            <div class="col-4 col-6-xsmall"><span class="image fit"><img src="images/pmac.png" alt="" style="width: 35%; height: auto;"/></span></div>
+							Peter MacCallum Cancer Centre
+							<ul>
+								<li>Price Jackson</li>
+								<li>Michael Hofman</li>
+							</ul>
+							<br/>
+
+                            <div class="col-4 col-6-xsmall"><span class="image fit"><img src="images/UME_UKE.svg" alt="" style="width: 35%; height: auto;"/></span></div>
+							University Hospital Essen
+							<ul>
+								<li><a href="https://www.ikim.uk-essen.de/people">Jens Kleesiek</a></li>
+								<li><a href="https://mml.ikim.nrw/authors/moon-sung-kim/">Moon Kim</a></li>
+								<li><a href="https://www.uni-due.de/zmb/members/ken-herrmann-2.php">Ken Herrmann</a></li>
+							</ul>
+
+							</p>
+							<hr/>
+						</section>
+
+					</div>
+				</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="https://github.com/lab-midas/autopet" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="mailto: autopetchallenge@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; autoPET organizers. All rights reserved.</li>
+				</ul>
+			</footer>
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
